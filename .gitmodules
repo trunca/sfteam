@@ -1,0 +1,9 @@
+[submodule "meta-dream"]
+	path = meta-dream
+	url = https://github.com/PLi-metas/meta-dream.git
+[submodule "meta-ini"]
+	path = meta-ini
+	url = https://github.com/PLi-metas/meta-ini.git
+[submodule "meta-fulan"]
+	path = meta-fulan
+	url = https://github.com/PLi-metas/meta-fulan.git
