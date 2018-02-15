@@ -21,7 +21,7 @@ inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-require openplugins-distutils.inc
+require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
 
 # Just a quick hack to "compile" it
 do_compile() {
