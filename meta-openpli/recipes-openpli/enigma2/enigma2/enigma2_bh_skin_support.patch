@@ -1,0 +1,715 @@
+diff -Naur pli-e2.orig/lib/gui/egauge.cpp pli-e2/lib/gui/egauge.cpp
+--- pli-e2.orig/lib/gui/egauge.cpp	1970-01-01 01:00:00.000000000 +0100
++++ pli-e2/lib/gui/egauge.cpp	2018-02-15 10:25:30.325492539 +0100
+@@ -0,0 +1,96 @@
++#include <lib/gui/egauge.h>
++#include <math.h>
++
++
++eGauge::eGauge(eWidget *parent)
++	:eWidget(parent), m_have_border_color(false)
++{
++
++}
++
++void eGauge::setBorderColor(const gRGB &color)
++{
++	m_border_color=color;
++	m_have_border_color=true;
++	invalidate();
++}
++
++int eGauge::event(int event, void *data, void *data2)
++{
++	switch (event)
++	{
++	case evtPaint:
++	{
++		ePtr<eWindowStyle> style;
++
++		eSize s(size());
++
++		gPainter &painter = *(gPainter*)data2;
++
++		gRGB pal[256];
++		pal[0] = 0;
++		pal[1] = m_border_color;
++		pal[2] = 0xffFFff;
++		pal[3] = 0x00ff00;
++
++		for (int a=0; a<0x10; ++a)
++			pal[a | 0x10] = (0x111111 * a) | 0xFF;
++		painter.setPalette(pal, 0, 256);
++
++		if (m_have_border_color) {
++			painter.setBackgroundColor(gColor(1));
++			painter.setForegroundColor(gColor(1));
++		} else  {
++			painter.setBackgroundColor(gColor(2));
++			painter.setForegroundColor(gColor(2));
++		}
++
++		painter.line(ePoint(basex, basey), ePoint(endx, endy));
++		painter.line(ePoint(basex, (basey -1)), ePoint(endx, endy));
++		painter.line(ePoint(basex, (basey -2)), ePoint(endx, endy));
++		painter.line(ePoint(basex, (basey +1)), ePoint(endx, endy));
++		painter.line(ePoint(basex, (basey +2)), ePoint(endx, endy));
++		painter.line(ePoint((basex -1), basey), ePoint(endx, endy));
++		painter.line(ePoint((basex -2), basey), ePoint(endx, endy));
++		painter.line(ePoint((basex +1), basey), ePoint(endx, endy));
++		painter.line(ePoint((basex +2), basey), ePoint(endx, endy));
++		if(basex < endx)
++			painter.line(ePoint(basex, basey), ePoint((endx -1), endy));
++		if(basex > endx)
++			painter.line(ePoint(basex, basey), ePoint((endx +1), endy));
++		if(basey > endy)
++			painter.line(ePoint(basex, basey), ePoint(endx, (endy -1)));
++		if(basey < endy)
++			painter.line(ePoint(basex, basey), ePoint(endx, (endy +1)));
++
++
++		return 0;
++	}
++	case evtChangedGauge:
++	{
++
++		int mystart = 0;
++		int perc = m_value;
++
++		basex = size().width() >> 1;
++		basey = size().height() >> 1;
++		double angle = (double) mystart + (double) perc * (double)(360 - (mystart<<1)) / 100.0;
++		double rads  = angle*M_PI/180;
++
++		endx = basex + (int) (sin(rads) * (double)(size().width())/2.0);
++		endy = basey - (int) (cos(rads) * (double)(size().height())/2.0);
++
++		invalidate();
++
++		return 0;
++	}
++	default:
++		return eWidget::event(event, data, data2);
++	}
++}
++
++void eGauge::setValue(int value)
++{
++	m_value = value;
++	event(evtChangedGauge);
++}
+diff -Naur pli-e2.orig/lib/gui/egauge.h pli-e2/lib/gui/egauge.h
+--- pli-e2.orig/lib/gui/egauge.h	1970-01-01 01:00:00.000000000 +0100
++++ pli-e2/lib/gui/egauge.h	2018-02-15 10:25:30.325492539 +0100
+@@ -0,0 +1,26 @@
++#ifndef __lib_gui_egauge_h
++#define __lib_gui_egauge_h
++
++#include <lib/gui/ewidget.h>
++
++class eGauge: public eWidget
++{
++public:
++	eGauge(eWidget *parent);
++	void setValue(int val);
++	void setBorderColor(const gRGB &color);
++protected:
++	int event(int event, void *data=0, void *data2=0);
++private:
++	enum eGaugeEvent
++	{
++		evtChangedGauge = evtUserWidget
++	};
++	bool m_have_border_color;
++	int m_value;
++	int endx, endy, basex, basey;
++	
++	gRGB m_border_color;
++};
++
++#endif
+diff -Naur pli-e2.orig/lib/gui/Makefile.inc pli-e2/lib/gui/Makefile.inc
+--- pli-e2.orig/lib/gui/Makefile.inc	2018-02-15 10:23:52.377217931 +0100
++++ pli-e2/lib/gui/Makefile.inc	2018-02-15 10:25:30.325492539 +0100
+@@ -3,6 +3,7 @@
+ gui_libenigma_gui_a_SOURCES = \
+ 	gui/ebutton.cpp \
+ 	gui/ecanvas.cpp \
++	gui/egauge.cpp \
+ 	gui/einput.cpp \
+ 	gui/einputnumber.cpp \
+ 	gui/einputstring.cpp \
+@@ -25,6 +26,7 @@
+ guiinclude_HEADERS = \
+ 	gui/ebutton.h \
+ 	gui/ecanvas.h \
++	gui/egauge.h \
+ 	gui/einput.h \
+ 	gui/einputnumber.h \
+ 	gui/einputstring.h \
+diff -Naur pli-e2.orig/lib/python/Components/Converter/BhAnalogic.py pli-e2/lib/python/Components/Converter/BhAnalogic.py
+--- pli-e2.orig/lib/python/Components/Converter/BhAnalogic.py	1970-01-01 01:00:00.000000000 +0100
++++ pli-e2/lib/python/Components/Converter/BhAnalogic.py	2018-02-15 10:25:30.325492539 +0100
+@@ -0,0 +1,34 @@
++from Components.Converter.Converter import Converter
++from Components.Element import cached
++from time import localtime, strftime
++
++class BhAnalogic(Converter, object):
++
++	def __init__(self, type):
++		Converter.__init__(self, type)
++		if type == "Seconds":
++			self.type = 1
++		elif type == "Minutes":
++			self.type = 2
++		elif type == "Hours":
++			self.type = 3
++		else:
++			self.type = -1
++
++	@cached
++	def getValue(self):
++		time = self.source.time
++		if time is None:
++			return 0
++		
++		t = localtime(time)	
++		
++		if self.type == 1:
++			return int((t.tm_sec *100) /60)
++		elif self.type == 2:
++			return int((t.tm_min *100) /60)
++		elif self.type == 3:
++			return int(((t.tm_hour *100) /12) + (t.tm_min /8))
++		
++
++	value = property(getValue)
+diff -Naur pli-e2.orig/lib/python/Components/Converter/Makefile.am pli-e2/lib/python/Components/Converter/Makefile.am
+--- pli-e2.orig/lib/python/Components/Converter/Makefile.am	2018-02-15 10:23:52.380217848 +0100
++++ pli-e2/lib/python/Components/Converter/Makefile.am	2018-02-15 10:25:30.325492539 +0100
+@@ -8,4 +8,4 @@
+ 	ServiceOrbitalPosition.py CryptoInfo.py TextCase.py \
+ 	ValueBitTest.py TunerInfo.py ConfigEntryTest.py ClientsStreaming.py TemplatedMultiContent.py ProgressToText.py \
+ 	Combine.py SensorToText.py ValueToPixmap.py PliExtraInfo.py genre.py TransponderInfo.py \
+-	RotorPosition.py VfdDisplay.py
++	RotorPosition.py VfdDisplay.py BhAnalogic.py
+diff -Naur pli-e2.orig/lib/python/Components/Renderer/Bhclock.py pli-e2/lib/python/Components/Renderer/Bhclock.py
+--- pli-e2.orig/lib/python/Components/Renderer/Bhclock.py	1970-01-01 01:00:00.000000000 +0100
++++ pli-e2/lib/python/Components/Renderer/Bhclock.py	2018-02-15 10:25:30.325492539 +0100
+@@ -0,0 +1,34 @@
++from Components.VariableValue import VariableValue
++from Renderer import Renderer
++
++from enigma import eGauge
++
++class Bhclock(VariableValue, Renderer):
++	def __init__(self):
++		Renderer.__init__(self)
++		VariableValue.__init__(self)
++
++	GUI_WIDGET = eGauge
++
++	def changed(self, what):
++		if what[0] == self.CHANGED_CLEAR:
++			return
++
++		value = self.source.value
++		if value is None:
++			value = 0
++		self.setValue(value)
++		
++	GUI_WIDGET = eGauge
++	
++	def postWidgetCreate(self, instance):
++		instance.setValue(0)
++
++	
++	def setValue(self, value):
++		#self.instance.setValue(5)
++		if self.instance is not None:
++			self.instance.setValue(value)
++
++
++	#value = property(setValue)
+diff -Naur pli-e2.orig/lib/python/Components/Renderer/Makefile.am pli-e2/lib/python/Components/Renderer/Makefile.am
+--- pli-e2.orig/lib/python/Components/Renderer/Makefile.am	2018-02-15 10:23:52.384217736 +0100
++++ pli-e2/lib/python/Components/Renderer/Makefile.am	2018-02-15 10:25:30.325492539 +0100
+@@ -3,4 +3,4 @@
+ install_PYTHON = \
+ 	__init__.py Label.py Progress.py Listbox.py Renderer.py Pixmap.py \
+ 	FixedLabel.py PositionGauge.py Canvas.py CiModuleControl.py Picon.py Pig.py \
+-	FrontpanelLed.py ChannelNumber.py VideoSize.py NextEpgInfo.py
++	FrontpanelLed.py ChannelNumber.py VideoSize.py NextEpgInfo.py Bhclock.py
+diff -Naur pli-e2.orig/lib/python/enigma_python.i pli-e2/lib/python/enigma_python.i
+--- pli-e2.orig/lib/python/enigma_python.i	2018-02-15 10:23:52.426216568 +0100
++++ pli-e2/lib/python/enigma_python.i	2018-02-15 10:25:30.325492539 +0100
+@@ -69,6 +69,7 @@
+ #include <lib/gui/ewidgetanimation.h>
+ #include <lib/gui/eslider.h>
+ #include <lib/gui/epositiongauge.h>
++#include <lib/gui/egauge.h>
+ #include <lib/gui/evideo.h>
+ #include <lib/gui/ecanvas.h>
+ #include <lib/python/connections.h>
+@@ -213,6 +214,7 @@
+ %include <lib/gui/ewindow.h>
+ %include <lib/gui/eslider.h>
+ %include <lib/gui/epositiongauge.h>
++%include <lib/gui/egauge.h>
+ %include <lib/gui/ewidgetdesktop.h>
+ %include <lib/gui/elistbox.h>
+ %include <lib/gui/elistboxcontent.h>
+diff -Naur pli-e2.orig/lib/python/enigma_python.i.orig pli-e2/lib/python/enigma_python.i.orig
+--- pli-e2.orig/lib/python/enigma_python.i.orig	1970-01-01 01:00:00.000000000 +0100
++++ pli-e2/lib/python/enigma_python.i.orig	2018-02-15 10:23:52.426216568 +0100
+@@ -0,0 +1,449 @@
++/*
++  NOTE: you have two options when adding classes so that
++  they are callable *from* python.
++  
++   - either you %include the header file
++   - or you re-declare it
++   
++  In both cases, you must #include the required
++  header file (i.e. the header file itself), otherwise
++  enigma_python_wrap.cxx won't build.
++  
++	In case you import the whole header file,
++	please make sure that no unimportant stuff
++	is wrapped, as this makes the wrapper stuff
++	much more complex and it can probably break 
++	very easily because of missing typemaps etc.
++	
++	you could make use of dizzy macros to ensure
++	that some stuff is left out when parsed as SWIG
++	definitions, but be sure to not modify the binary 
++	representation. DON'T USE #ifdef SWIG_COMPILE
++	for leaving out stuff (unless you *really* know
++	what you are doing,of course!). you WILL break it.
++		
++	The better way (with more work) is to re-declare
++	the class. It won't be compiled, so you can
++	leave out stuff as you like.
++
++
++
++Oh, things like "operator= is private in this context" etc.
++is usually caused by not marking PSignals as immutable. 
++*/
++
++%module enigma
++%{
++
++#define SWIG_COMPILE
++#include <lib/base/ebase.h>
++#include <lib/base/smartptr.h>
++#include <lib/base/eenv.h>
++#include <lib/base/eerror.h>
++#include <lib/base/message.h>
++#include <lib/base/e2avahi.h>
++#include <lib/driver/rc.h>
++#include <lib/driver/rcinput_swig.h>
++#include <lib/service/event.h>
++#include <lib/service/iservice.h>
++#include <lib/service/service.h>
++#include <lib/service/servicedvb.h>
++#include <lib/service/servicepeer.h>
++#include <lib/gdi/fb.h>
++#include <lib/gdi/font.h>
++#include <lib/gdi/gpixmap.h>
++#include <lib/gdi/gfbdc.h>
++#include <lib/gdi/grc.h>
++#include <lib/gdi/gmaindc.h>
++#include <lib/gui/ewidget.h>
++#include <lib/gui/elabel.h>
++#include <lib/gui/einput.h>
++#include <lib/gui/einputstring.h>
++#include <lib/gui/einputnumber.h>
++#include <lib/gui/epixmap.h>
++#include <lib/gui/ebutton.h>
++#include <lib/gui/ewindow.h>
++#include <lib/gui/ewidgetdesktop.h>
++#include <lib/gui/ewindowstyle.h>
++#include <lib/gui/ewindowstyleskinned.h>
++#include <lib/gui/ewidgetanimation.h>
++#include <lib/gui/eslider.h>
++#include <lib/gui/epositiongauge.h>
++#include <lib/gui/evideo.h>
++#include <lib/gui/ecanvas.h>
++#include <lib/python/connections.h>
++#include <lib/python/pythonconfig.h>
++#include <lib/gui/elistbox.h>
++#include <lib/gui/elistboxcontent.h>
++#include <lib/gui/esubtitle.h>
++#include <lib/service/listboxservice.h>
++#include <lib/nav/pcore.h>
++#include <lib/actions/action.h>
++#include <lib/gdi/gfont.h>
++#include <lib/gdi/epng.h>
++#include <lib/dvb/db.h>
++#include <lib/dvb/frontendparms.h>
++#include <lib/dvb/idvb.h>
++#include <lib/dvb/dvb.h>
++#include <lib/dvb/frontend.h>
++#include <lib/dvb/volume.h>
++#include <lib/dvb/sec.h>
++#include <lib/dvb/epgcache.h>
++#include <lib/dvb/dvbtime.h>
++#include <lib/dvb/pmt.h>
++#include <lib/dvb/cahandler.h>
++#include <lib/dvb/fastscan.h>
++#include <lib/dvb/cablescan.h>
++#include <lib/dvb/encoder.h>
++#include <lib/dvb/streamserver.h>
++#include <lib/components/scan.h>
++#include <lib/components/file_eraser.h>
++#include <lib/components/tuxtxtapp.h>
++#include <lib/driver/avswitch.h>
++#include <lib/driver/hdmi_cec.h>
++#include <lib/driver/rfmod.h>
++#include <lib/driver/misc_options.h>
++#include <lib/driver/etimezone.h>
++#include <lib/gdi/lcd.h>
++#include <lib/mmi/mmi_ui.h>
++#include <lib/dvb_ci/dvbci.h>
++#include <lib/dvb_ci/dvbci_ui.h>
++#include <lib/python/python.h>
++#include <lib/python/python_helpers.h>
++#include <lib/gdi/picload.h>
++%}
++
++%feature("ref")   iObject "$this->AddRef(); /* eDebug(\"AddRef (%s:%d)!\", __FILE__, __LINE__); */ "
++%feature("unref") iObject "$this->Release(); /* eDebug(\"Release! %s:%d\", __FILE__, __LINE__); */ "
++
++/* this magic allows smartpointer to be used as OUTPUT arguments, i.e. call-by-reference-styled return value. */
++
++%define %typemap_output_simple(Type)
++ %typemap(in,numinputs=0) Type *OUTPUT ($*1_ltype temp),
++              Type &OUTPUT ($*1_ltype temp)
++   "$1 = new Type; (void)temp;";
++ %fragment("t_out_helper"{Type},"header",
++     fragment="t_output_helper") {}
++ %typemap(argout,fragment="t_out_helper"{Type}) Type *OUTPUT, Type &OUTPUT
++   "$result = t_output_helper($result, (SWIG_NewPointerObj((void*)($1), $1_descriptor, 1)));"
++%enddef
++
++%define %typemap_output_ptr(Type)
++ %typemap(in,numinputs=0) Type *OUTPUT ($*1_ltype temp),
++              Type &OUTPUT ($*1_ltype temp)
++   "$1 = new Type; (void)temp;";
++ %fragment("t_out_helper"{Type},"header",
++     fragment="t_output_helper") {}
++ %typemap(argout,fragment="t_out_helper"{Type}) Type *OUTPUT, Type &OUTPUT
++		// generate None if smartpointer is NULL
++   "$result = t_output_helper($result, ((*$1) ? SWIG_NewPointerObj((void*)($1), $1_descriptor, 1) : (delete $1, Py_INCREF(Py_None), Py_None)));"
++%enddef
++
++
++#define DEBUG
++typedef long time_t;
++%include "typemaps.i"
++%include "std_string.i"
++%include <lib/python/swig.h>
++%include <lib/base/object.h>
++%include <lib/base/eenv.h>
++%include <lib/base/eerror.h>
++
++%include <lib/python/python_dvb.i>
++%include <lib/python/python_service.i>
++%include <lib/python/python_pmt.i>
++%include <lib/python/python_pcore.i>
++
++%immutable eSocketNotifier::activated;
++%include <lib/base/ebase.h>
++%include <lib/base/smartptr.h>
++%include <lib/service/event.h>
++%include <lib/service/iservice.h>
++%include <lib/service/service.h>
++%include <lib/base/e2avahi.h>
++%include <lib/service/servicepeer.h>
++
++// TODO: embed these...
++%immutable ePicLoad::PictureData;
++%immutable eButton::selected;
++%immutable eInput::changed;
++%immutable eComponentScan::statusChanged;
++%immutable eComponentScan::newService;
++%immutable eFastScan::scanProgress;
++%immutable eFastScan::scanCompleted;
++%immutable eCableScan::scanProgress;
++%immutable eCableScan::scanCompleted;
++%immutable pNavigation::m_event;
++%immutable pNavigation::m_record_event;
++%immutable eListbox::selectionChanged;
++%immutable eDVBCI_UI::ciStateChanged;
++%immutable eSocket_UI::socketStateChanged;
++%immutable eDVBResourceManager::frontendUseMaskChanged;
++%immutable eAVSwitch::vcr_sb_notifier;
++%immutable eHdmiCEC::messageReceived;
++%immutable eHdmiCEC::addressChanged;
++%immutable ePythonMessagePump::recv_msg;
++%immutable eDVBLocalTimeHandler::m_timeUpdated;
++%immutable iCryptoInfo::clientname;
++%immutable iCryptoInfo::clientinfo;
++%immutable iCryptoInfo::verboseinfo;
++%immutable iCryptoInfo::usedcaid;
++%immutable iCryptoInfo::decodetime;
++%immutable iCryptoInfo::usedcardid;
++%immutable eTuxtxtApp::appClosed;
++%immutable iDVBChannel::receivedTsidOnid;
++%include <lib/base/message.h>
++%include <lib/driver/rc.h>
++%include <lib/driver/rcinput_swig.h>
++%include <lib/gdi/fb.h>
++%include <lib/gdi/font.h>
++%include <lib/gdi/gpixmap.h>
++%include <lib/gdi/gmaindc.h>
++%include <lib/gdi/epoint.h>
++%include <lib/gdi/erect.h>
++%include <lib/gdi/esize.h>
++%include <lib/gui/ewidget.h>
++%include <lib/gui/elabel.h>
++%include <lib/gui/einput.h>
++%include <lib/gui/einputstring.h>
++%include <lib/gui/einputnumber.h>
++%include <lib/gui/epixmap.h>
++%include <lib/gui/ecanvas.h>
++%include <lib/gui/ebutton.h>
++%include <lib/gui/ewindow.h>
++%include <lib/gui/eslider.h>
++%include <lib/gui/epositiongauge.h>
++%include <lib/gui/ewidgetdesktop.h>
++%include <lib/gui/elistbox.h>
++%include <lib/gui/elistboxcontent.h>
++%include <lib/gui/ewindowstyle.h>
++%include <lib/gui/ewindowstyleskinned.h>
++%include <lib/gui/ewidgetanimation.h>
++%include <lib/gui/evideo.h>
++%include <lib/gui/esubtitle.h>
++%include <lib/service/listboxservice.h>
++%include <lib/nav/pcore.h>
++%include <lib/actions/action.h>
++%include <lib/gdi/gfont.h>
++%include <lib/gdi/epng.h>
++%include <lib/dvb/volume.h>
++%include <lib/dvb/sec.h>
++%include <lib/dvb/epgcache.h>
++%include <lib/dvb/frontendparms.h>
++%include <lib/dvb/dvbtime.h>
++%include <lib/dvb/idvb.h>
++%include <lib/dvb/dvb.h>
++%include <lib/dvb/frontend.h>
++%include <lib/dvb/pmt.h>
++%include <lib/dvb/cahandler.h>
++%include <lib/dvb/fastscan.h>
++%include <lib/dvb/cablescan.h>
++%include <lib/components/scan.h>
++%include <lib/components/file_eraser.h>
++%include <lib/components/tuxtxtapp.h>
++%include <lib/driver/avswitch.h>
++%include <lib/driver/hdmi_cec.h>
++%include <lib/driver/rfmod.h>
++%include <lib/driver/misc_options.h>
++%include <lib/driver/etimezone.h>
++%include <lib/gdi/lcd.h>
++%include <lib/mmi/mmi_ui.h>
++%include <lib/dvb_ci/dvbci.h>
++%include <lib/dvb_ci/dvbci_ui.h>
++%include <lib/dvb/db.h>
++%include <lib/python/python.h>
++%include <lib/python/pythonconfig.h>
++%include <lib/gdi/picload.h>
++%include <lib/dvb/streamserver.h>
++/**************  eptr  **************/
++
++/**************  signals  **************/
++
++template<class R> class PSignal0
++{
++public:
++	PyObject *get();
++};
++
++%template(PSignal0V) PSignal0<void>;
++
++%typemap(out) PSignal0V {
++	$1 = $input->get();
++}
++
++template<class R, class P0> class PSignal1
++{
++public:
++	PyObject *get();
++};
++
++%template(PSignal1VI) PSignal1<void,int>;
++%template(PSignal1VS) PSignal1<void,const char *c>;
++
++%typemap(out) PSignal1VI {
++	$1 = $input->get();
++}
++
++%typemap(out) PSignal1VS {
++	$1 = $input->get();
++}
++
++%template(PSignal1VoidICECMessage) PSignal1<void,ePtr<iCECMessage>&>;
++
++%typemap(out) PSignal1VoidICECMessage {
++	$1 = $input->get();
++}
++
++template<class R, class P0, class P1> class PSignal2
++{
++public:
++	PyObject *get();
++};
++
++%template(PSignal2VoidIRecordableServiceInt) PSignal2<void,ePtr<iRecordableService>&,int>;
++
++%typemap(out) PSignal2VoidIRecordableServiceInt {
++	$1 = $input->get();
++}
++
++%template(PSignal2VII) PSignal2<void,int,int>;
++
++%typemap(out) PSignal2VII {
++	$1 = $input->get();
++}
++
++%{
++RESULT SwigFromPython(ePtr<gPixmap> &result, PyObject *obj)
++{	
++	ePtr<gPixmap> *res;
++
++	res = 0;
++	result = 0;
++#ifndef SWIGTYPE_p_ePtrT_gPixmap_t
++#define SWIGTYPE_p_ePtrT_gPixmap_t SWIGTYPE_p_ePtrTgPixmap_t
++#endif
++	if (SWIG_Python_ConvertPtr(obj, (void **)&res, SWIGTYPE_p_ePtrT_gPixmap_t, SWIG_POINTER_EXCEPTION | 0))
++		return -1;
++	if (!res)
++		return -1;
++	result = *res;
++	return 0;
++}
++PyObject *New_eServiceReference(const eServiceReference &ref)
++{
++    eServiceReference *result = new eServiceReference(ref);
++    return SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_eServiceReference, 1);
++}
++PyObject *New_iRecordableServicePtr(const ePtr<iRecordableService> &ptr)
++{
++    ePtr<iRecordableService> *result = new ePtr<iRecordableService>(ptr);
++#ifndef SWIGTYPE_p_ePtrT_iRecordableService_t
++#define SWIGTYPE_p_ePtrT_iRecordableService_t SWIGTYPE_p_ePtrTiRecordableService_t
++#endif
++    return SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_ePtrT_iRecordableService_t, 1);
++}
++PyObject *New_iCECMessagePtr(const ePtr<iCECMessage> &ptr)
++{
++    ePtr<iCECMessage> *result = new ePtr<iCECMessage>(ptr);
++#ifndef SWIGTYPE_p_ePtrT_iCECMessage_t
++#define SWIGTYPE_p_ePtrT_iCECMessage_t SWIGTYPE_p_ePtrTiCECMessage_t
++#endif
++    return SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_ePtrT_iCECMessage_t, 1);
++}
++%}
++
++/* needed for service groups */
++
++PyObject *getBestPlayableServiceReference(const eServiceReference &bouquet_ref, const eServiceReference &ignore, bool simulate=false);
++%{
++PyObject *getBestPlayableServiceReference(const eServiceReference &bouquet_ref, const eServiceReference &ignore, bool simulate=false)
++{
++	eStaticServiceDVBBouquetInformation info;
++	if (info.isPlayable(bouquet_ref, ignore, simulate))
++		return New_eServiceReference(info.getPlayableService());
++	Py_INCREF(Py_None);
++	return Py_None;
++}
++%}
++
++void setTunerTypePriorityOrder(int);
++%{
++void setTunerTypePriorityOrder(int order)
++{
++	eDVBFrontend::setTypePriorityOrder(order);
++}
++%}
++
++void setPreferredTuner(int);
++%{
++void setPreferredTuner(int index)
++{
++	eDVBFrontend::setPreferredFrontend(index);
++}
++%}
++
++void setSpinnerOnOff(int);
++%{
++void setSpinnerOnOff(int onoff)
++{
++	gRC *rc = gRC::getInstance();
++	if (rc) rc->setSpinnerOnOff(onoff);
++}
++%}
++
++void setEnableTtCachingOnOff(int);
++%{
++void setEnableTtCachingOnOff(int onoff)
++{
++	eTuxtxtApp *tt = eTuxtxtApp::getInstance();
++	if (tt) tt->setEnableTtCachingOnOff(onoff);
++}
++%}
++
++int getUsedEncoderCount();
++%{
++int getUsedEncoderCount()
++{
++	eEncoder *encoders = eEncoder::getInstance();
++	if (encoders) return encoders->getUsedEncoderCount();
++	return 0;
++}
++%}
++
++int getLinkedSlotID(int);
++%{
++int getLinkedSlotID(int fe)
++{
++        eFBCTunerManager *mgr = eFBCTunerManager::getInstance();
++        if (mgr) return mgr->getLinkedSlotID(fe);
++        return -1;
++}
++%}
++
++/************** temp *****************/
++
++	/* need a better place for this, i agree. */
++%{
++extern void runMainloop();
++extern void quitMainloop(int exit_code);
++extern eApplication *getApplication();
++extern int getPrevAsciiCode();
++extern void addFont(const char *filename, const char *alias, int scale_factor, int is_replacement, int renderflags = 0);
++extern const char *getEnigmaVersionString();
++extern const char *getBoxType();
++extern const char *getGStreamerVersionString();
++extern void dump_malloc_stats(void);
++%}
++
++extern void addFont(const char *filename, const char *alias, int scale_factor, int is_replacement, int renderflags = 0);
++extern int getPrevAsciiCode();
++extern void runMainloop();
++extern void quitMainloop(int exit_code);
++extern eApplication *getApplication();
++extern const char *getEnigmaVersionString();
++extern const char *getBoxType();
++extern const char *getGStreamerVersionString();
++extern void dump_malloc_stats(void);
++
++%include <lib/python/python_console.i>
++%include <lib/python/python_base.i>
