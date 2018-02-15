@@ -17,7 +17,7 @@ ENIGMA2_PLUGINS_remove = " \
 	"
 
 # Add enigma2-plugin-extensions-openwebif-extras to replace enigma2-plugin-extensions-openwebif
-# Ship some extra stuff with the image like oscam except for smallflash where we only pre-install oscam
+# Ship some extra stuff with the image like youtube, serviceapp, iptvplayer etc.. except for smallflash where we only pre-install oscam
 ENIGMA2_PLUGINS_append = " \
 	enigma2-plugin-extensions-openwebif-extras \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", " \
