@@ -8,4 +8,6 @@ RRECOMMENDS_${PN}_remove_exteplayeronly = " \
         ${GST_UGLY_RDEPS} \
         "
 
-SRC_URI += " file://enigma2_bh_skin_support.patch "
+SRC_URI_append = " \
+        ${@bb.utils.contains("TARGET_ARCH", "sh4", "", "file://enigma2_bh_skin_support.patch", d)} \
+        "
