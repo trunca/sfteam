@@ -43,8 +43,9 @@
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
-⋅⋅* git clone https://github.com/OpenPLi/openpli-oe-core.git
-
+'''
+git clone https://github.com/OpenPLi/openpli-oe-core.git
+'''
 2. Enter the openpli-oe-core directory:
 ⋅⋅* cd openpli-oe-core
 
