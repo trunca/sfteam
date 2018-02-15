@@ -7,3 +7,6 @@
 [submodule "meta-fulan"]
 	path = meta-fulan
 	url = https://github.com/PLi-metas/meta-fulan.git
+[submodule "meta-raspberrypi"]
+	path = meta-raspberrypi
+	url = https://github.com/PLi-metas/meta-raspberrypi.git
