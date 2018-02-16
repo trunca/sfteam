@@ -185,10 +185,12 @@ addtask do_cleanup after do_populate_sysroot before do_package
 
 RREPLACES_${PN} = "enigma2-plugin-extensions-openwebif"
 RCONFLICTS_${PN} = "enigma2-plugin-extensions-openwebif"
+RPROVIDES_${PN} =+ "enigma2-plugin-extensions-openwebif"
 
 PACKAGES =+ "${PN}-vxg"
 DESCRIPTION_${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
 FILES_${PN}-vxg = "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
 RDEPENDS_${PN}-vxg =+ "${PN}"
 RREPLACES_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
-RCONFLICTS_${PN}-xvg = "enigma2-plugin-extensions-openwebif-vxg"
+RCONFLICTS_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
+RPROVIDES_${PN}-vxg =+ "enigma2-plugin-extensions-openwebif-vxg"
