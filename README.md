@@ -52,6 +52,20 @@
 * xpeedlx3
 * xsolomini3
 
+## Odin:
+* axase3
+* axase3c
+* axodin
+* axodinc
+* classm
+* evo
+* evoe3hd
+* galaxym6
+* genius
+* geniuse3hd
+* maram9
+* starsatlx
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
