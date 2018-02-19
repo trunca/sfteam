@@ -55,7 +55,7 @@
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
-* git clone https://github.com/OpenPLi/openpli-oe-core.git
+* git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
 
 2. Enter the openpli-oe-core directory:
 * cd openpli-oe-core
@@ -69,9 +69,9 @@
 5. Build for your favourite machine:
 * cd build
 * source env.source
-* MACHINE=dm800 bitbake openpli-enigma2-image
+* MACHINE=dm800 make image
 
 6. Optional build the feed for your favourite machine:
-* MACHINE=dm800 bitbake openpli-enigma2-feed
+* MACHINE=dm800 make feed
 
 ### Each time you run the command from step 4, all git repositories will get updated to their latest versions.
