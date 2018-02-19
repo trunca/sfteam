@@ -1,44 +1,56 @@
 # OpenPLi repositories for extra receivers, plugins and skins:
 
 ## Dreambox:
-* DM7020HD
-* DM7020HD V2
-* DM7080
-* DM800
-* DM800Se
-* DM800Se V2
-* DM8000
-* DM500HD
-* DM500HD V2
-* DM520
-* DM820
-* DM900
-* DM920
+* dm500hd
+* dm500hdv2
+* dm520 (Known as dm52x because it can be used for dm525 too)
+* dm7020hd
+* dm7020hdv2
+* dm7080
+* dm800
+* dm8000
+* dm800se
+* dm800sev2
+* dm820
+* dm900
+* dm920
 
 ## Fulan (spark):
-* Spark7111
-* Spark7162
+* spark
+* spark7162
 
 ## Raspberry Pi:
-* Pi 1
-* Pi 2
-* Pi 3
-* Pi 3 (64bit)
-* Pi Zero
+* raspberrypi
+* raspberrypi0
+* raspberrypi2
+* raspberrypi3
 
 ## INI:
-* Atemio6000
-* Atemio6100
-* Atemio6200
-* Atemio Nemesis
-* Beyonwiz T2
-* Beyonwiz T3
-* Bwidow X2
-* Herobox EX4 HD
-* MB Hybrid
-* MB Mini Plus
-* Opticumtt
-* Xsolo Mini 3
+* atemio5x00
+* atemio6000
+* atemio6100
+* atemio6200
+* atemionemesis
+* beyonwizt2
+* beyonwizt3
+* beyonwizt4
+* bwidowx
+* bwidowx2
+* evoslim
+* heroboxex4hd
+* mbhybrid
+* mbmini
+* mbminiplus
+* mbtwin
+* mbultra
+* opticumtt
+* sezam1000hd
+* sezam5000hd
+* sezammarvel
+* ventonhdx
+* xpeedlx
+* xpeedlx3
+* xsolomini3
 
 ## Howto Build:
 
