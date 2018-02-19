@@ -10,3 +10,6 @@
 [submodule "meta-raspberrypi"]
 	path = meta-raspberrypi
 	url = https://github.com/PLi-metas/meta-raspberrypi.git
+[submodule "meta-odin"]
+	path = meta-odin
+	url = https://github.com/PLi-metas/meta-odin
