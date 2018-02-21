@@ -81,8 +81,6 @@
 * pli-extras/update.sh
 
 5. Build for your favourite machine:
-* cd build
-* source env.source
 * MACHINE=dm800 make image
 
 6. Optional build the feed for your favourite machine:
