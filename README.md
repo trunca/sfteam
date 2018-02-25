@@ -66,6 +66,10 @@
 * maram9
 * starsatlx
 
+## Octagon:
+* sf4008
+* sf5008
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
