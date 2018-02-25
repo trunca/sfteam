@@ -13,3 +13,6 @@
 [submodule "meta-odin"]
 	path = meta-odin
 	url = https://github.com/PLi-metas/meta-odin
+[submodule "meta-octagon"]
+	path = meta-octagon
+	url = https://github.com/PLi-metas/meta-octagon.git
