@@ -16,3 +16,6 @@
 [submodule "meta-octagon"]
 	path = meta-octagon
 	url = https://github.com/PLi-metas/meta-octagon.git
+[submodule "meta-dags"]
+	path = meta-dags
+	url = https://github.com/PLi-metas/meta-dags.git
