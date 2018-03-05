@@ -70,6 +70,18 @@
 * sf4008
 * sf5008
 
+## DAGS:
+* force1
+* force1plus
+* megaforce1plus
+* optimussos1plus
+* optimussos2plus
+* optimussos3plus
+* tmnano2super
+* tmnano3t
+* worldvisionf1
+* worldvisionf1plus
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
