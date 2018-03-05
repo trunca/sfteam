@@ -73,6 +73,11 @@
 ## DAGS:
 * force1
 * force1plus
+* force2
+* force2nano
+* force2plus
+* force2plushv
+* force2se
 * iqonios100hd
 * iqonios200hd
 * iqonios300hd
@@ -80,6 +85,8 @@
 * mediaart200hd
 * mediabox
 * megaforce1plus
+* megaforce2
+* optimussos
 * optimussos1
 * optimussos1plus
 * optimussos2
@@ -91,8 +98,15 @@
 * tmnano2super
 * tmnano2t
 * tmnano3t
+* tmnanom3
+* tmnanose
+* tmnanosecombo
+* tmnanosem2
+* tmnanosem2plus
+* tmnanoseplus
 * tmsingle
 * tmtwin
+* valalinux
 * worldvisionf1
 * worldvisionf1plus
 
