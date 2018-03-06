@@ -78,6 +78,8 @@
 * force2plus
 * force2plushv
 * force2se
+* force3uhd
+* force3uhdplus
 * iqonios100hd
 * iqonios200hd
 * iqonios300hd
@@ -94,6 +96,7 @@
 * optimussos3plus
 * roxxs200hd
 * tm2t
+* tm4ksuper
 * tmnano
 * tmnano2super
 * tmnano2t
@@ -106,6 +109,7 @@
 * tmnanoseplus
 * tmsingle
 * tmtwin
+* tmtwin4k
 * valalinux
 * worldvisionf1
 * worldvisionf1plus
