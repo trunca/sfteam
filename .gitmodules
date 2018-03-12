@@ -19,3 +19,6 @@
 [submodule "meta-dags"]
 	path = meta-dags
 	url = https://github.com/PLi-metas/meta-dags.git
+[submodule "meta-entwopia"]
+	path = meta-entwopia
+	url = https://github.com/PLi-metas/meta-entwopia.git
