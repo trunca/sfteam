@@ -114,6 +114,14 @@
 * worldvisionf1
 * worldvisionf1plus
 
+## Entwopia:
+* bre2ze
+* enfinity
+* evomini
+* evominiplus
+* marvel1
+* x2plus
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
