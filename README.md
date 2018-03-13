@@ -123,11 +123,11 @@
 * x2plus
 
 ## XCore:
-* bcm7358
+* bcm7358 (Sample)
 * spycat4k
 * spycat4kcombo
 * spycat4kmini
-* vp7358ci.conf
+* vp7358ci (Sample)
 
 ## Howto Build:
 
