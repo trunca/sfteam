@@ -22,3 +22,6 @@
 [submodule "meta-entwopia"]
 	path = meta-entwopia
 	url = https://github.com/PLi-metas/meta-entwopia.git
+[submodule "meta-xcore"]
+	path = meta-xcore
+	url = https://github.com/PLi-metas/meta-xcore.git
