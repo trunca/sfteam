@@ -122,6 +122,13 @@
 * marvel1
 * x2plus
 
+## XCore:
+* bcm7358
+* spycat4k
+* spycat4kcombo
+* spycat4kmini
+* vp7358ci.conf
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
