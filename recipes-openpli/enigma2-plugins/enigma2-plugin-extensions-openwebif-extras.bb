@@ -69,7 +69,7 @@ python do_cleanup () {
         ('formuler3', 'formuler3.png', 'formuler1.png', 'formuler1.html'),
         ('formuler4', 'formuler4.png', 'formuler1.png', 'formuler1.html'),
         ('formuler4turbo', 'formuler4turbo.png', 'formuler1.png', 'formuler1.html'),
-        ('gbquad4k', 'gb7252.png', 'gb7252.png', 'gb7252.html'),
+        ('gbquad4k', 'gbquad4k.png', 'gb7252.png', 'gb7252.html'),
         ('hd11', 'hd11.png', 'hd1x00.png', 'hd1x00.html'),
         ('hd1100', 'hd1100.png', 'hd1x00.png', 'hd1x00.html'),
         ('hd1200', 'hd1200.png', 'hd1x00.png', 'hd1x00.html'),
@@ -137,6 +137,7 @@ python do_cleanup () {
         ('vipert2c', 'vipert2c.png', 'amiko.png', 'amiko.html'),
         ('lunix3-4k', 'lunix3-4k.png', 'qviart.png', 'qviart.html'),
         ('lunix', 'lunix.png', 'qviart.png', 'qviart.html'),
+        ('e4hd', 'e4hd.png', 'e4hd.png', 'e4hd.html'),
         ('spark', 'spark.jpg', 'spark.png', 'spark.html'),
         ('spark7162', 'spark7162.jpg', 'spark.png', 'spark7162.html'),
     ]
