@@ -129,34 +129,12 @@
 * spycat4kmini
 * vp7358ci (Sample)
 
-## Meson:
-* amlogic-p200
-* amlogic-p201
-* amlogic-p212
-* amlogic-p230
-* amlogic-p231
-* amlogic-q200
-* amlogic-q201
-* amlogic-s805
-* amlogic-s905
-* amlogic-s905d
-* amlogic-s905x
-* amlogic-s912
-* amlogic-s9xxx
-* hardkernel-odroidc1
-* hardkernel-odroidc2
-* hwacom-amazetv
-* khadas-vim
-* khadas-vim2
-* libretech-cc
-* nexbox-a1
-* nexbox-a95x-s905
-* nexbox-a95x-s905x
-* tronsmart-vega-s95-meta
-* tronsmart-vega-s95-pro
-* tronsmart-vega-s95-telos
-* wetek-hub
-* wetek-play2
+## Amlogic:
+* odroidc1
+* odroidc2
+* odroidxu3
+* wetekplay
+* wetekplay2
 
 ## Howto Build:
 
