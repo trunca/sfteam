@@ -25,6 +25,3 @@
 [submodule "meta-xcore"]
 	path = meta-xcore
 	url = https://github.com/PLi-metas/meta-xcore.git
-[submodule "meta-meson"]
-	path = meta-meson
-	url = https://github.com/PLi-metas/meta-meson.git
