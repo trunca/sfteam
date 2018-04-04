@@ -38,7 +38,7 @@ do_install_append() {
 
 FILES_${PN} = "${PLUGINPATH}"
 
-SRCREV = "faead8c7594695fd4f1a0fc06d6607173beb3db4"
+SRCREV = "${AUTOREV}"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 SRC_URI_append_dm8000 += " file://get-rid-of-orgdream-check.patch "
