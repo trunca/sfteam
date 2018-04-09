@@ -23,8 +23,20 @@ PKGV = "1+git${GITPKGV}"
 
 require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
 
+# Remove VTI Theme To save some free space on flash for devices which have small flash
+REMOVE_VTI_THEME = "\ 
+	            rm -rf ${S}/plugin/controllers/views/responsive \
+	            rm -rf ${S}/plugin/public/themes/absb \
+	            rm -rf ${S}/plugin/public/css/vti* \
+	            rm -rf ${S}/plugin/public/js/vti* \
+	            rm -rf ${S}/plugin/public/js/openwebif-1.2.14.min.js \
+	            rm -rf ${S}/plugin/public/js/openwebif-1.2.10.min.js \
+	            rm -rf ${S}/plugin/public/js/chosen.jquery.min.js \
+"
+
 # Just a quick hack to "compile" it
 do_compile() {
+        ${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "${REMOVE_VTI_THEME}" , "", d)}
 	cheetah-compile -R --nobackup ${S}/plugin
 	python -O -m compileall ${S}
 }
