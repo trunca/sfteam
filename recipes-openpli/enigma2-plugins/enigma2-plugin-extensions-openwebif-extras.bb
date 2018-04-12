@@ -194,9 +194,8 @@ DESCRIPTION_${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
 DESCRIPTION_${PN}-vti-theme = "VTI theme files"
 FILES_${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
 FILES_${PN}-vti-theme = "\
-			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes/absb/js/vti* \
-			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes/absb/css/vti* \
-			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes/absb/plugins/vti \
+			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes/absb \
+			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/controllers/views/responsive \
 			"
 RDEPENDS_${PN}-vxg =+ "${PN}"
 RDEPENDS_${PN}-vti-theme =+ "${PN}"
