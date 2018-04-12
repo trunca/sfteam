@@ -24,6 +24,7 @@ ENIGMA2_PLUGINS_append = " \
 	enigma2-plugin-extensions-openwebif-extras \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", " \
 	enigma2-plugin-softcams-oscam", " \
+	enigma2-plugin-extensions-openwebif-extras-vti-theme \
 	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-extensions-youtube \
