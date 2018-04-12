@@ -23,20 +23,8 @@ PKGV = "1+git${GITPKGV}"
 
 require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
 
-# Remove VTI Theme To save some free space on flash for devices which have small flash
-REMOVE_VTI_THEME = "\ 
-	            rm -rf ${S}/plugin/controllers/views/responsive \
-	            rm -rf ${S}/plugin/public/themes/absb \
-	            rm -rf ${S}/plugin/public/css/vti* \
-	            rm -rf ${S}/plugin/public/js/vti* \
-	            rm -rf ${S}/plugin/public/js/openwebif-1.2.14.min.js \
-	            rm -rf ${S}/plugin/public/js/openwebif-1.2.10.min.js \
-	            rm -rf ${S}/plugin/public/js/chosen.jquery.min.js \
-"
-
 # Just a quick hack to "compile" it
 do_compile() {
-        ${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "${REMOVE_VTI_THEME}" , "", d)}
 	cheetah-compile -R --nobackup ${S}/plugin
 	python -O -m compileall ${S}
 }
@@ -123,6 +111,7 @@ python do_cleanup () {
         ('fusionhdse', 'fusionhdse.png', 'fusionhdse.png', 'fusionhdse.html'),
         ('galaxy4k', 'galaxy4k.png', 'galaxy4k.png', 'galaxy4k.html'),
         ('purehd', 'purehd.png', 'purehd.png', 'purehd.html'),
+        ('purehdse', 'purehd.png', 'purehd.png', 'purehd.html'),
         ('revo4k', 'revo4k.png', 'revo4k.png', 'revo4k.html'),
         ('et10000', 'et10000.png', 'et8000.png', 'et8000.html'),
         ('et4x00', 'et4x00.png', 'et_rc13_normal.png', 'et4x00.html'),
@@ -200,9 +189,19 @@ RREPLACES_${PN} = "enigma2-plugin-extensions-openwebif"
 RCONFLICTS_${PN} = "enigma2-plugin-extensions-openwebif"
 RPROVIDES_${PN} =+ "enigma2-plugin-extensions-openwebif"
 
-PACKAGES =+ "${PN}-vxg"
+PACKAGES =+ "${PN}-vxg ${PN}-vti-theme"
 DESCRIPTION_${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
+DESCRIPTION_${PN}-vti-theme = "VTI theme files"
 FILES_${PN}-vxg = "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
+FILES_${PN}-vti-theme = "\
+			rm -rf ${S}/plugin/controllers/views/responsive \
+			rm -rf ${S}/plugin/public/themes/absb \
+			rm -rf ${S}/plugin/public/css/vti* \
+			rm -rf ${S}/plugin/public/js/vti* \
+			rm -rf ${S}/plugin/public/js/openwebif-1.2.14.min.js \
+			rm -rf ${S}/plugin/public/js/openwebif-1.2.10.min.js \
+			rm -rf ${S}/plugin/public/js/chosen.jquery.min.js \
+"
 RDEPENDS_${PN}-vxg =+ "${PN}"
 RREPLACES_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
 RCONFLICTS_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
