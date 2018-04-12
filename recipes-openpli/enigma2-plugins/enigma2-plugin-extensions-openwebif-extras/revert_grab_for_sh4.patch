@@ -1,12 +1,13 @@
 --- e2openplugin-OpenWebif.orig/plugin/controllers/models/grab.py	2018-04-05 07:40:43.449545117 +0200
 +++ e2openplugin-OpenWebif/plugin/controllers/models/grab.py	2018-04-05 07:43:58.653211156 +0200
-@@ -9,81 +9,88 @@
+@@ -9,83 +9,90 @@
  #                                                                            #
  ##############################################################################
  from enigma import eConsoleAppContainer
 -from twisted.web import resource, server
 +from twisted.web import static, resource, http, server
 +import os
+ import time
  
  GRAB_PATH = '/usr/bin/grab'
  
@@ -70,6 +71,7 @@
 -			sref = '_'.join(ref.split(':', 10)[:10])
 -		except:  # noqa: E722
 -			sref = 'screenshot'
+-		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 -		request.notifyFinish().addErrback(self.requestAborted)
 -		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
 -		request.setHeader('Content-Type', 'image/%s' % fileformat.replace("jpg", "jpeg"))
@@ -94,6 +96,7 @@
 +			self.sref = 'screenshot'
  
 -	def grabFinished(self, retval=None):
++		self.sref = self.sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 +		self.filepath = "/tmp/screenshot." + self.fileformat
 +		graboptions.append(self.filepath)
 +		self.container.execute(GRAB_PATH, *graboptions)
