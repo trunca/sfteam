@@ -203,6 +203,7 @@ FILES_${PN}-vti-theme = "\
 			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/js/chosen.jquery.min.js \
 "
 RDEPENDS_${PN}-vxg =+ "${PN}"
+RDEPENDS_${PN}-vti-theme =+ "${PN}"
 RREPLACES_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
 RCONFLICTS_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
 RPROVIDES_${PN}-vxg =+ "enigma2-plugin-extensions-openwebif-vxg"
