@@ -1,18 +1,14 @@
 SUMMARY = "Enigma2 Skin MX HQ7"
 MAINTAINER = "OBH"
-SECTION = "base"
-PRIORITY = "required"
-LICENSE = "proprietary"
-PACKAGE_ARCH = "all"
+SECTION = "misc"
+PRIORITY = "optional"
+LICENSE = "CLOSED"
 RDEPENDS_${PN} += "font-tiny"
 
-require conf/license/license-gplv2.inc
-
-inherit gitpkgv
+inherit gitpkgv allarch
 SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
-VER ="1.0"
 
 SRC_URI=" \
 	git://github.com/OBH-Skins/MX-HQ7-Pli.git;protocol=git \
@@ -23,7 +19,10 @@ S = "${WORKDIR}/git"
 
 FILES_${PN} = "/usr/*"
 
+do_compile() {
+}
+
 do_install() {
     rm -Rf ${S}/usr/share/fonts
-    cp -r ${S}/usr ${D}/
+    cp -r --preserve=mode,links ${S}/usr ${D}/
 }

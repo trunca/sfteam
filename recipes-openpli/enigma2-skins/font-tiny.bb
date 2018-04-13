@@ -1,11 +1,10 @@
 SUMMARY = "Enigma2 Font Tiny"
 MAINTAINER = "OBH"
-SECTION = "base"
-PRIORITY = "required"
-LICENSE = "proprietary"
-PACKAGE_ARCH = "all"
+SECTION = "misc"
+PRIORITY = "optional"
+LICENSE = "CLOSED"
 
-require conf/license/license-gplv2.inc
+inherit allarch
 
 VER ="1.0"
 

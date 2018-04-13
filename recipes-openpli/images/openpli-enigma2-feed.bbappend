@@ -13,4 +13,10 @@ ENIGMA2_OPTIONAL_append = " \
 	enigma2-plugin-skins-mx-hq9w \
 	enigma2-plugin-skins-mx-hq7 \
 	enigma2-plugin-skins-glamouraurafhd \
+	enigma2-plugin-skins-kravenfhd \
+	enigma2-plugin-skins-kravenhd \
+	enigma2-plugin-skins-kravenvb \
+	enigma2-plugin-skins-sevenhd \
+	enigma2-plugin-skins-simple-gray-hd \
+	enigma2-plugin-skins-xionhdf \
 	"

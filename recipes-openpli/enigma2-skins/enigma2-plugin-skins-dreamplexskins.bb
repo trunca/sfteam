@@ -1,13 +1,10 @@
 SUMMARY = "Enigma2 DreamPlex skin pack"
 MAINTAINER = "OpenViX"
-SECTION = "base"
-PRIORITY = "required"
-LICENSE = "proprietary"
-PACKAGE_ARCH = "all"
+SECTION = "misc"
+PRIORITY = "optional"
+LICENSE = "CLOSED"
 
-require conf/license/license-gplv2.inc
-
-VER ="1.0"
+inherit allarch
 
 SRC_URI = "file://skins.zip"
 
@@ -17,5 +14,5 @@ FILES_${PN} = "/usr/*"
 
 do_install() {
     mkdir -p ${D}/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins
-    cp -r ${S}/DreamPlexSkins/* ${D}/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/
+    cp -r --preserve=mode,links ${S}/DreamPlexSkins/* ${D}/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/
 }
