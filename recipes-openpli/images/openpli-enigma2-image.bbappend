@@ -27,6 +27,7 @@ ENIGMA2_PLUGINS_append = " \
 	enigma2-plugin-extensions-openwebif-extras-vti-theme \
 	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-iptvplayer \
 	enigma2-plugin-extensions-blurayplayer", d)} \
