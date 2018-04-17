@@ -135,6 +135,7 @@
 * odroidxu3
 * wetekplay
 * wetekplay2
+* x8hp (MINIX NEO X8-H Plus)
 
 ## Howto Build:
 
