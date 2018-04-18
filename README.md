@@ -160,6 +160,21 @@
 * wetekplay2
 * x8hp
 
+## Ceryon:
+* 9910lx
+* 9911lx
+* e4hd
+* e4hdcombo
+* e4hdhybrid
+* odin2hybrid
+* odinplus
+* sf208
+* sf228
+* sf238
+* singleboxlcd
+* twinboxlcd
+* twinboxlcdci5
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
