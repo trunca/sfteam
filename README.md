@@ -130,12 +130,35 @@
 * vp7358ci (Sample)
 
 ## Amlogic:
+* amazetv
+* libretechcc
+* nexboxa1
+* nexboxa95x
+* nexboxa95xx
 * odroidc1
 * odroidc2
 * odroidxu3
+* p200
+* p201
+* p212
+* p230
+* p231
+* q200
+* q201
+* s805
+* s905
+* s905d
+* s905x
+* s912
+* s9xxx
+* vegas95meta
+* vegas95pro
+* vegas95telos
+* vim
+* vim2
 * wetekplay
 * wetekplay2
-* x8hp (MINIX NEO X8-H Plus)
+* x8hp
 
 ## Howto Build:
 
