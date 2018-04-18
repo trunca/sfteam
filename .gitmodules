@@ -28,3 +28,6 @@
 [submodule "meta-amlogic"]
 	path = meta-amlogic
 	url = https://github.com/PLi-metas/meta-amlogic.git
+[submodule "meta-ceryon"]
+	path = meta-ceryon
+	url = https://github.com/PLi-metas/meta-ceryon.git
