@@ -1,7 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append += " \
-        ${@bb.utils.contains("TARGET_ARCH", "sh4", "", "file://enigma2_bh_skin_support.patch", d)} \
 	${@bb.utils.contains("TARGET_ARCH", "sh4", "", "git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models", d)} \
         "
 
