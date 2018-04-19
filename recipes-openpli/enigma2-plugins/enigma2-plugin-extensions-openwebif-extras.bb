@@ -24,6 +24,7 @@ PKGV = "1+git${GITPKGV}"
 require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
 
 do_configure_prepend() {
+	git --git-dir="${WORKDIR}/extra_rc_models/.git" --work-tree="${WORKDIR}/extra_rc_models" pull
 	for i in $(find "${WORKDIR}/extra_rc_models/webif" -maxdepth 1 -type f -name "*.png")
 	do
 		cp -f "${i}" "${S}/plugin/public/images/boxes/"
