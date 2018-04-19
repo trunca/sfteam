@@ -10,7 +10,7 @@ SRCREV = "${AUTOREV}"
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI= "git://github.com/KravenHD/SevenHD.git file://pli.png"
+SRC_URI= "git://github.com/KravenHD/SevenHD.git"
 
 S = "${WORKDIR}/git"
 
@@ -20,11 +20,7 @@ do_compile() {
 }
 
 do_install() {
-    mkdir -p ${D}/usr/share/enigma2
-    mkdir -p ${D}/${libdir}/enigma2/python
-    cp -r --preserve=mode,links ${S}/data/usr/lib/enigma2/python/Plugins/Extensions/SevenHD ${D}/usr/share/enigma2/
-    cp -r --preserve=mode,links ${S}/data/usr/lib/enigma2/python/Components ${D}/${libdir}/enigma2/python/
-    install -m 0644 ${WORKDIR}/pli.png ${D}/usr/share/enigma2/SevenHD/
+    cp -r --preserve=mode,links ${S}/data/usr ${D}/
 }
 
 do_postrm_append() {
