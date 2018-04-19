@@ -23,6 +23,21 @@ PKGV = "1+git${GITPKGV}"
 
 require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
 
+do_configure_prepend() {
+	for i in $(find "${WORKDIR}/extra_rc_models/webif" -maxdepth 1 -type f -name "*.png")
+	do
+		cp -f "${i}" "${S}/plugin/public/images/boxes/"
+	done
+	for i in $(find "${WORKDIR}/extra_rc_models/webif" -maxdepth 1 -type f -name "*.html")
+	do
+		cp -f "${i}" "${S}/plugin/public/static/remotes/"
+	done
+	for i in $(find "${WORKDIR}/extra_rc_models" -maxdepth 1 -type f -name "*.png")
+	do
+		cp -f "${i}" "${S}/plugin/public/images/remotes/"
+	done
+}
+		
 # Just a quick hack to "compile" it
 do_compile() {
 	cheetah-compile -R --nobackup ${S}/plugin
@@ -43,6 +58,9 @@ SRCREV = "${AUTOREV}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 SRC_URI_append_dm8000 += " file://get-rid-of-orgdream-check.patch "
 SRC_URI_append_sh4 += " file://revert_grab_for_sh4.patch "
+SRC_URI_append += " git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models"
+
+SRCREV_FORMAT = "${MODULE}"
 
 python do_cleanup () {
     # contains: MACHINE, box image, remote image, remote map
