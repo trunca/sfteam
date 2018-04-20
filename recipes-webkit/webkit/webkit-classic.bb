@@ -43,7 +43,7 @@ EXTRA_OECONF = "\
 	--enable-fast-malloc \
 	--enable-shared-workers \
 	--enable-workers \
-	--disable-javascript-debugger \
+	${@bb.utils.contains("TARGET_ARCH", "sh4", "--disable-javascript-debugger", "--enable-javascript-debugger", d)} \
 	--enable-fast-mobile-scrolling \
 	--enable-offline-web-applications \
 	"
@@ -77,8 +77,9 @@ do_install_append() {
         install -m 0755 ${WORKDIR}/build/Programs/GtkLauncher ${D}/usr/bin/browser
 }
 
-PACKAGES =+ "${PN}-webinspector ${PN}-browser bjavascriptcore"
-FILES_libjavascriptcore = "${libdir}/libjavascriptcoregtk-1.0.so.*"
+PACKAGES =+ "${PN}-webinspector ${PN}-browser ${PN}-bjavascriptcore"
+FILES_${PN}-libjavascriptcore = "${libdir}/libjavascriptcoregtk-1.0.so.*"
+RPROVIDES_${PN} += "bjavascriptcore"
 FILES_${PN}-webinspector = "${datadir}/webkitgtk-*/webinspector/"
 FILES_${PN}-browser = "/usr/bin/browser"
 FILES_${PN} += "${datadir}/webkitgtk-*/resources/error.html \
