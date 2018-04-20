@@ -78,7 +78,7 @@ do_install_append() {
 }
 
 PACKAGES =+ "${PN}-webinspector ${PN}-browser ${PN}-bjavascriptcore"
-FILES_${PN}-libjavascriptcore = "${libdir}/libjavascriptcoregtk-1.0.so.*"
+FILES_${PN}-bjavascriptcore = "${libdir}/libjavascriptcoregtk-1.0.so.*"
 RPROVIDES_${PN} += "bjavascriptcore"
 FILES_${PN}-webinspector = "${datadir}/webkitgtk-*/webinspector/"
 FILES_${PN}-browser = "/usr/bin/browser"
