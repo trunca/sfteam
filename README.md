@@ -1,4 +1,4 @@
-# OpenPLi repositories for extra receivers, plugins and skins:
+# Extra repositories for PLi's OE: https://github.com/OpenPLi/openpli-oe-core
 
 ## Dreambox:
 * dm500hd
@@ -206,7 +206,7 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 ```
 (Replace "location" with your path)
 
-## How to build an image (Example dm800):
+## How to build an image (Example: dm800):
 
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
@@ -225,5 +225,6 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 
 6. Optional build the feed for your favourite machine:
 * MACHINE=dm800 make feed
-
-* Hint Each time you run the command from step 4 all git repositories will get updated to their latest versions.
+```
+Hint: Each time you run the command from step 4 all git repositories will get updated to their latest versions.
+```
