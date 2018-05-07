@@ -194,6 +194,7 @@
 LOCALE_GENERATION_WITH_CROSS-LOCALEDEF_forcevariable = "0"
 ```
 * sudo dpkg-reconfigure dash
+
 Answer: No
 
 * sudo apt-get install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git gzip help2man ncurses-bin libncurses5-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html wget chrpath libxml2-utils xsltproc python-setuptools libc6 genromfs mtd-utils dpkg-dev sshpass poedit translate-toolkit xclip linux-firmware linux-headers-`uname -r` linux-headers-generic linux-image-generic linux-libc-dev linux-source u-boot-tools upx-ucl doxygen repo optipng python-dev libglib2.0-dev pngquant default-jdk
@@ -205,7 +206,7 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 ```
 (Replace "location" with your path)
 
-## Howto Build:
+## How to build an image (Example dm800):
 
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
@@ -225,4 +226,4 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 6. Optional build the feed for your favourite machine:
 * MACHINE=dm800 make feed
 
-### Each time you run the command from step 4, all git repositories will get updated to their latest versions.
+* Hint Each time you run the command from step 4 all git repositories will get updated to their latest versions.
