@@ -31,3 +31,6 @@
 [submodule "meta-ceryon"]
 	path = meta-ceryon
 	url = https://github.com/PLi-metas/meta-ceryon.git
+[submodule "meta-dinobot"]
+	path = meta-dinobot
+	url = https://github.com/PLi-metas/meta-dinobot.git
