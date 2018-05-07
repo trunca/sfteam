@@ -176,6 +176,17 @@
 * twinboxlcd
 * twinboxlcdci5
 
+## Dinobot:
+* anadol4k
+* axashis4kcombo
+* axashis4kcomboplus
+* dinobot4k
+* dinobot4kl
+* dinobot4kmini
+* dinobot4kplus
+* dinobot4kse
+* mediabox4k
+
 ## Howto Build:
 
 1. Clone openpli-oe-core somewhere:
