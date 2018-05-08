@@ -42,3 +42,19 @@ IMAGE_INSTALL_append_sh4 += " \
 	enigma2-plugin-skins-xionhdf \
 	enigma2-plugin-skins-simple-gray-hd \
 	"
+
+IMAGE_INSTALL_remove = " \
+	ofgwrite \
+	"
+
+IMAGE_INSTALL_remove_dm500hd = " \
+	samba-base \
+	"
+
+IMAGE_INSTALL_remove_dm800 = " \
+	samba-base \
+	"
+
+IMAGE_INSTALL_remove_dm800se = " \
+	samba-base \
+	"
