@@ -16,7 +16,7 @@ inherit autotools gitpkgv pkgconfig
 
 PKGV = "${GITPKGVTAG}"
 
-SRCREV = "bc6b94b015fdaf7c4dab56ccb996eecea8bc4373"
+SRCREV = "398e8169ea6d3d854af0173b1e66bf13c124f901"
 
 SRC_URI = " git://git.code.sf.net/p/smbnetfs/git;branch=master \
 			file://configure.patch \
