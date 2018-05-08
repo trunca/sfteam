@@ -187,6 +187,11 @@
 * dinobot4kse
 * mediabox4k
 
+## AZBox:
+* azboxhd
+* azboxme
+* azboxminime
+
 ## Ubuntu 18.04 LTS setup:
 
 * Add the following line to your "meta-openpli/conf/distro/openpli-common.conf" file:
