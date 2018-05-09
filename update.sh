@@ -1,4 +1,13 @@
 #!/bin/sh
+echo ""
+echo "pli-extras by MastaG, Persian Prince and Hains"
+echo ""
+echo "https://github.com/PLi-metas"
+echo ""
+echo "Each time you run this script all git repositories will get updated to their latest versions!"
+echo ""
+echo "For extra rc support you need to add your STB files to https://github.com/PLi-metas/extra_rc_models"
+echo ""
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "${SCRIPTPATH}"
 git pull
