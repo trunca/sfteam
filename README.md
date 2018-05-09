@@ -161,25 +161,20 @@
 * raspberrypi3
 
 ## XCore:
-* bcm7358 (Sample)
+* bcm7358
 * spycat4k
 * spycat4kcombo
 * spycat4kmini
 * vp7358ci (Sample)
 
 ## Ubuntu 18.04 LTS setup:
-
-* Add the following line to your "meta-openpli/conf/distro/openpli-common.conf" file:
-```
-LOCALE_GENERATION_WITH_CROSS-LOCALEDEF_forcevariable = "0"
-```
 * sudo dpkg-reconfigure dash
 
 Answer: No
 
 * sudo apt-get install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git gzip help2man ncurses-bin libncurses5-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html wget chrpath libxml2-utils xsltproc python-setuptools libc6 genromfs mtd-utils dpkg-dev sshpass poedit translate-toolkit xclip linux-firmware linux-headers-`uname -r` linux-headers-generic linux-image-generic linux-libc-dev linux-source u-boot-tools upx-ucl doxygen repo optipng python-dev libglib2.0-dev pngquant default-jdk
 
-* bitbake fix:
+* bitbake fix (Optional):
 ```
 export PATH=/location/openpli-oe-core/bitbake/bin:$PATH
 export BBPATH=/location/openpli-oe-core/bitbake/bin
@@ -187,10 +182,13 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 (Replace "location" with your path)
 
 ## How to build an image (Example: dm800):
-
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
 
+* Add the following line to your "meta-openpli/conf/distro/openpli-common.conf" file:
+```
+LOCALE_GENERATION_WITH_CROSS-LOCALEDEF_forcevariable = "0"
+```
 2. Enter the openpli-oe-core directory:
 * cd openpli-oe-core
 
@@ -200,10 +198,10 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 4. Initialize and update all repositories:
 * pli-extras/update.sh
 
-5. Build for your favourite machine:
+5. Build PLi image for your machine:
 * MACHINE=dm800 make image
 
-6. Optional build the feed for your favourite machine:
+6. (Optional) Build the feed for your machine:
 * MACHINE=dm800 make feed
 ```
 Hint: Each time you run the command from step 4 all git repositories will get updated to their latest versions.
