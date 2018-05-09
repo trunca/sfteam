@@ -1,74 +1,56 @@
 # Extra repositories for PLi's OE: https://github.com/OpenPLi/openpli-oe-core
 
-## Dreambox:
-* dm500hd
-* dm500hdv2
-* dm520
-* dm7020hd
-* dm7020hdv2
-* dm7080
-* dm800
-* dm8000
-* dm800se
-* dm800sev2
-* dm820
-* dm900
-* dm920
+## Amlogic:
+* amazetv
+* libretechcc
+* nexboxa1
+* nexboxa95x
+* nexboxa95xx
+* odroidc1
+* odroidc2
+* odroidxu3
+* p200
+* p201
+* p212
+* p230
+* p231
+* q200
+* q201
+* s805
+* s905
+* s905d
+* s905x
+* s912
+* s9xxx
+* vegas95meta
+* vegas95pro
+* vegas95telos
+* vim
+* vim2
+* wetekplay
+* wetekplay2
+* x8hp
 
-## Fulan:
-* spark
-* spark7162
+## AZBox:
+* azboxhd
+* azboxme
+* azboxminime
 
-## Raspberry Pi:
-* raspberrypi
-* raspberrypi0
-* raspberrypi2
-* raspberrypi3
-
-## INI:
-* atemio5x00
-* atemio6000
-* atemio6100
-* atemio6200
-* atemionemesis
-* beyonwizt2
-* beyonwizt3
-* beyonwizt4
-* bwidowx
-* bwidowx2
-* evoslim
-* heroboxex4hd
-* mbhybrid
-* mbmini
-* mbminiplus
-* mbtwin
-* mbultra
-* opticumtt
-* sezam1000hd
-* sezam5000hd
-* sezammarvel
-* ventonhdx
-* xpeedlx
-* xpeedlx3
-* xsolomini3
-
-## Odin:
-* axase3
-* axase3c
-* axodin
-* axodinc
-* classm
-* evo
-* evoe3hd
-* galaxym6
-* genius
-* geniuse3hd
-* maram9
-* starsatlx
-
-## Octagon:
-* sf4008
-* sf5008
+## Ceryon:
+* 9910lx
+* 9911lx
+* e4hd
+* e4hdcombo
+* e4hdhybrid
+* odin2hybrid
+* odinplus
+* protek4k
+* sf208
+* sf228
+* sf238
+* singleboxlcd
+* twinboxlcd
+* twinboxlcdci5
 
 ## DAGS:
 * force1
@@ -114,68 +96,6 @@
 * worldvisionf1
 * worldvisionf1plus
 
-## Entwopia:
-* bre2ze
-* enfinity
-* evomini
-* evominiplus
-* marvel1
-* viperslim
-* x2plus
-
-## XCore:
-* bcm7358 (Sample)
-* spycat4k
-* spycat4kcombo
-* spycat4kmini
-* vp7358ci (Sample)
-
-## Amlogic:
-* amazetv
-* libretechcc
-* nexboxa1
-* nexboxa95x
-* nexboxa95xx
-* odroidc1
-* odroidc2
-* odroidxu3
-* p200
-* p201
-* p212
-* p230
-* p231
-* q200
-* q201
-* s805
-* s905
-* s905d
-* s905x
-* s912
-* s9xxx
-* vegas95meta
-* vegas95pro
-* vegas95telos
-* vim
-* vim2
-* wetekplay
-* wetekplay2
-* x8hp
-
-## Ceryon:
-* 9910lx
-* 9911lx
-* e4hd
-* e4hdcombo
-* e4hdhybrid
-* odin2hybrid
-* odinplus
-* sf208
-* sf228
-* sf238
-* singleboxlcd
-* twinboxlcd
-* twinboxlcdci5
-
 ## Dinobot:
 * anadol4k
 * axashis4kcombo
@@ -187,10 +107,91 @@
 * dinobot4kse
 * mediabox4k
 
-## AZBox:
-* azboxhd
-* azboxme
-* azboxminime
+## Dreambox:
+* dm500hd
+* dm500hdv2
+* dm520
+* dm7020hd
+* dm7020hdv2
+* dm7080
+* dm800
+* dm8000
+* dm800se
+* dm800sev2
+* dm820
+* dm900
+* dm920
+
+## Entwopia:
+* bre2ze
+* enfinity
+* evomini
+* evominiplus
+* marvel1
+* viperslim
+* x2plus
+
+## Fulan:
+* spark
+* spark7162
+
+## INI:
+* atemio5x00
+* atemio6000
+* atemio6100
+* atemio6200
+* atemionemesis
+* beyonwizt2
+* beyonwizt3
+* beyonwizt4
+* bwidowx
+* bwidowx2
+* evoslim
+* heroboxex4hd
+* mbhybrid
+* mbmini
+* mbminiplus
+* mbtwin
+* mbultra
+* opticumtt
+* sezam1000hd
+* sezam5000hd
+* sezammarvel
+* ventonhdx
+* xpeedlx
+* xpeedlx3
+* xsolomini3
+
+## Octagon:
+* sf4008
+* sf5008
+
+## Odin:
+* axase3
+* axase3c
+* axodin
+* axodinc
+* classm
+* evo
+* evoe3hd
+* galaxym6
+* genius
+* geniuse3hd
+* maram9
+* starsatlx
+
+## Raspberry Pi:
+* raspberrypi
+* raspberrypi0
+* raspberrypi2
+* raspberrypi3
+
+## XCore:
+* bcm7358 (Sample)
+* spycat4k
+* spycat4kcombo
+* spycat4kmini
+* vp7358ci (Sample)
 
 ## Ubuntu 18.04 LTS setup:
 
