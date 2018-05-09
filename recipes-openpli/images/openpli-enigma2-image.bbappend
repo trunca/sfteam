@@ -1,4 +1,4 @@
-# Ugly workaround to skip installing the rt7777 on receiver which feature a kernel older than 3.3
+# Ugly workaround to skip installing the rt7777 on receivers with kernel older than 3.3
 TEST07 = "${@bb.utils.contains("TARGET_ARCH", "sh4", "", "rt7777", d)}"
 TEST17 = "${@bb.utils.contains("MACHINE", "dm800", "", "${TEST07}", d)}"
 TEST27 = "${@bb.utils.contains("MACHINE", "dm800se", "", "${TEST17}", d)}"
@@ -12,16 +12,15 @@ TEST97 = "${@bb.utils.contains("MACHINE", "dm7080", "", "${TEST87}", d)}"
 TESTA7 = "${@bb.utils.contains("MACHINE", "dm820", "", "${TEST97}", d)}"
 RT7777 = "${@bb.utils.contains("MACHINE", "dm500hdv2", "", "${TESTA7}", d)}"
 
+# Add enigma2-plugin-extensions-openwebif-extras to replace enigma2-plugin-extensions-openwebif
 ENIGMA2_PLUGINS_remove = " \
 	enigma2-plugin-extensions-openwebif \
 	"
 
-# Add enigma2-plugin-extensions-openwebif-extras to replace enigma2-plugin-extensions-openwebif
-# Ship some extra stuff with the image like youtube, serviceapp, iptvplayer etc.. except for smallflash where we only pre-install oscam
+# Ship some extra stuff with the image like youtube, serviceapp, iptvplayer etc except for smallflash
 ENIGMA2_PLUGINS_append = " \
 	enigma2-plugin-extensions-openwebif-extras \
-	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", " \
-	enigma2-plugin-softcams-oscam", " \
+	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	enigma2-plugin-extensions-openwebif-extras-vti-theme \
 	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-softcams-oscam \
