@@ -10,9 +10,7 @@ TEST77 = "${@bb.utils.contains("MACHINE", "dm7020hdv2", "", "${TEST67}", d)}"
 TEST87 = "${@bb.utils.contains("MACHINE", "dm520", "", "${TEST77}", d)}"
 TEST97 = "${@bb.utils.contains("MACHINE", "dm7080", "", "${TEST87}", d)}"
 TESTA7 = "${@bb.utils.contains("MACHINE", "dm820", "", "${TEST97}", d)}"
-TESTA8 = "${@bb.utils.contains("MACHINE", "dm500hdv2", "", "${TESTA7}", d)}"
-TESTA9 = "${@bb.utils.contains("MACHINE", "hardkernel-odroidc1", "", "${TESTA8}", d)}"
-RT7777 = "${@bb.utils.contains("MACHINE", "hardkernel-odroidc2", "", "${TESTA9}", d)}"
+RT7777 = "${@bb.utils.contains("MACHINE", "dm500hdv2", "", "${TESTA7}", d)}"
 
 ENIGMA2_PLUGINS_remove = " \
 	enigma2-plugin-extensions-openwebif \
@@ -35,26 +33,4 @@ ENIGMA2_PLUGINS_append = " \
 
 IMAGE_INSTALL_append += " \
 	${RT7777} \
-	"
-
-IMAGE_INSTALL_append_sh4 += " \
-	enigma2-plugin-skins-mx-hq9w \
-	enigma2-plugin-skins-xionhdf \
-	enigma2-plugin-skins-simple-gray-hd \
-	"
-
-IMAGE_INSTALL_remove = " \
-	ofgwrite \
-	"
-
-IMAGE_INSTALL_remove_dm500hd = " \
-	samba-base \
-	"
-
-IMAGE_INSTALL_remove_dm800 = " \
-	samba-base \
-	"
-
-IMAGE_INSTALL_remove_dm800se = " \
-	samba-base \
 	"

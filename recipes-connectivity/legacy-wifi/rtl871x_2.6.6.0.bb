@@ -6,7 +6,6 @@ LIC_FILES_CHKSUM = "file://../COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
 DEPENDS = "firmware-rtl8712u"
 
-
 inherit module
 
 SRC_URI = "http://source.mynonpublic.com/rtl871x-01112013.tar.gz \
@@ -36,15 +35,14 @@ do_compile () {
         'LD=${KERNEL_LD}'
 }
 
-export MB="${MACHINEBUILD}"
 export TM="${MACHINE}"
 
 do_install() {
     install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/
     install -m 0644 8712u${KERNEL_OBJECT_SUFFIX} ${D}${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/
-    if [ "$TM" = "dm800" ] && [ "$MB" = "estar" ]
+    if [ "$TM" = "dm800" ]
     then
-         echo "Not autoloading for estar!"
+         echo "Not autoloading!"
     else
          install -d ${D}/etc/modules-load.d
          echo 8712u > ${D}/etc/modules-load.d/wlan8712u.conf
