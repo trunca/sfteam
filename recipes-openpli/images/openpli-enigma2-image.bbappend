@@ -17,17 +17,13 @@ ENIGMA2_PLUGINS_remove = " \
 	enigma2-plugin-extensions-openwebif \
 	"
 
-# Ship some extra stuff with the image like youtube, serviceapp, iptvplayer etc except for smallflash
+# Ship some extra stuff with the image except for smallflash
 ENIGMA2_PLUGINS_append = " \
 	enigma2-plugin-extensions-openwebif-extras \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	enigma2-plugin-extensions-openwebif-extras-vti-theme \
-	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-softcams-oscam \
-	enigma2-plugin-softcams-oscam-emu \
-	enigma2-plugin-extensions-youtube \
-	enigma2-plugin-extensions-iptvplayer \
-	enigma2-plugin-extensions-blurayplayer", d)} \
+	enigma2-plugin-softcams-oscam-emu", d)} \
 	"
 
 IMAGE_INSTALL_append += " \
