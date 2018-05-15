@@ -59,7 +59,7 @@ cd ..
 echo "Stage 2: git add for new changes"
 echo ""
 git add *
-git commit -m "Update submodules"
+git commit -S -m "Update submodules"
 echo "Stage 3: git push for new changes"
 echo ""
 git push
