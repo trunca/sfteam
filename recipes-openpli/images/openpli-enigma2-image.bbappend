@@ -19,6 +19,7 @@ ENIGMA2_PLUGINS_remove = " \
 
 # Ship some extra stuff with the image except for smallflash
 ENIGMA2_PLUGINS_append = " \
+	enigma2-plugin-extensions-openwebif-extras \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu", d)} \
