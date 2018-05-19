@@ -46,7 +46,7 @@ do_compile() {
 	python -O -m compileall ${S}
 }
 
-PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/${MODULE}"
+PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif-extras"
 do_install_append() {
 	install -d ${D}${PLUGINPATH}
 	cp -r ${S}/plugin/* ${D}${PLUGINPATH}
