@@ -12,15 +12,10 @@ TEST97 = "${@bb.utils.contains("MACHINE", "dm7080", "", "${TEST87}", d)}"
 TESTA7 = "${@bb.utils.contains("MACHINE", "dm820", "", "${TEST97}", d)}"
 RT7777 = "${@bb.utils.contains("MACHINE", "dm500hdv2", "", "${TESTA7}", d)}"
 
-# Add enigma2-plugin-extensions-openwebif-extras to replace enigma2-plugin-extensions-openwebif
-ENIGMA2_PLUGINS_remove = " \
-	enigma2-plugin-extensions-openwebif \
-	"
-
 # Ship some extra stuff with the image except for smallflash
 ENIGMA2_PLUGINS_append = " \
-	enigma2-plugin-extensions-openwebif-extras \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
+	enigma2-plugin-extensions-openwebif-vti-theme \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu", d)} \
 	"
