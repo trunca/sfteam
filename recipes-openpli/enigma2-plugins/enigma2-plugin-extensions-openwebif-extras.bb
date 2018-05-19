@@ -214,13 +214,13 @@ RPROVIDES_${PN} =+ "enigma2-plugin-extensions-openwebif"
 PACKAGES =+ "${PN}-vxg ${PN}-vti-theme"
 DESCRIPTION_${PN}-vxg = "Adds Google Chrome support to OpenWebif's WebTV"
 DESCRIPTION_${PN}-vti-theme = "VTI theme files"
-FILES_${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg"
+FILES_${PN}-vxg = "${libdir}/enigma2/python/Plugins/Extensions/OpenWebif-extras/public/vxg"
 FILES_${PN}-vti-theme = "\
-			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/public/themes/absb \
-			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/controllers/views/responsive \
+			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif-extras/public/themes/absb \
+			${libdir}/enigma2/python/Plugins/Extensions/OpenWebif-extras/controllers/views/responsive \
 			"
 RDEPENDS_${PN}-vxg =+ "${PN}"
 RDEPENDS_${PN}-vti-theme =+ "${PN}"
-RREPLACES_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
-RCONFLICTS_${PN}-vxg = "enigma2-plugin-extensions-openwebif-vxg"
-RPROVIDES_${PN}-vxg =+ "enigma2-plugin-extensions-openwebif-vxg"
+RREPLACES_${PN}-vxg = "enigma2-plugin-extensions-openwebif-extras-vxg"
+RCONFLICTS_${PN}-vxg = "enigma2-plugin-extensions-openwebif-extras-vxg"
+RPROVIDES_${PN}-vxg =+ "enigma2-plugin-extensions-openwebif-extras-vxg"
