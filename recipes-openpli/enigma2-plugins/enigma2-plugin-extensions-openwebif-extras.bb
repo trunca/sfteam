@@ -21,7 +21,11 @@ inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-require ../../../meta-openpli/recipes-openpli/e2openplugins/openplugins-distutils.inc
+inherit distutils-openplugins
+
+SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-${MODULE}.git;protocol=git"
+
+S="${WORKDIR}/git"
 
 do_configure_prepend() {
 	git --git-dir="${WORKDIR}/extra_rc_models/.git" --work-tree="${WORKDIR}/extra_rc_models" pull
