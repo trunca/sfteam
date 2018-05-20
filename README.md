@@ -174,12 +174,21 @@ Answer: No
 
 * sudo apt-get install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git gzip help2man ncurses-bin libncurses5-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html wget chrpath libxml2-utils xsltproc python-setuptools libc6 genromfs mtd-utils dpkg-dev sshpass poedit translate-toolkit xclip linux-firmware linux-headers-`uname -r` linux-headers-generic linux-image-generic linux-libc-dev linux-source u-boot-tools upx-ucl doxygen repo optipng python-dev libglib2.0-dev pngquant default-jdk
 
-* bitbake fix (Optional):
+* (Optional) bitbake fix:
 ```
 export PATH=/location/openpli-oe-core/bitbake/bin:$PATH
 export BBPATH=/location/openpli-oe-core/bitbake/bin
 ```
 (Replace "location" with your path)
+
+## How to build compressed images for "smallflash" STBs:
+* Add the following lines to your "meta-openpli/conf/distro/openpli-common.conf" file:
+```
+FULL_OPTIMIZATION_azboxhd = "-Os -pipe ${DEBUG_FLAGS}"
+FULL_OPTIMIZATION_dm500hd = "-Os -pipe ${DEBUG_FLAGS}"
+FULL_OPTIMIZATION_dm800 = "-Os -pipe ${DEBUG_FLAGS}"
+FULL_OPTIMIZATION_dm800se = "-Os -pipe ${DEBUG_FLAGS}"
+```
 
 ## How to build an image (Example: dm800):
 1. Clone openpli-oe-core somewhere:
