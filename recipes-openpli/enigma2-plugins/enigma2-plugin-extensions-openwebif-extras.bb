@@ -64,7 +64,9 @@ SRCREV = "${AUTOREV}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 SRC_URI_append_dm8000 += " file://get-rid-of-orgdream-check.patch "
 SRC_URI_append_sh4 += " file://revert_grab_for_sh4.patch "
-SRC_URI_append += " git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models "
+SRC_URI_append += " git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models  \
+					file://revert-added-lcd-shot.patch \
+					"
 
 SRCREV_FORMAT = "${MODULE}"
 SRCREV[extra_rc_models] = "${AUTOREV}"

@@ -1,0 +1,29 @@
+This revert commit:
+https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/commit/73d37acea1f0c0038b5ee72a8cfc53b273f48a17
+
+Partially for now.
+
+diff --git a/plugin/controllers/models/info.py b/plugin/controllers/models/info.py
+index f79ef694..04324960 100644
+--- a/plugin/controllers/models/info.py
++++ b/plugin/controllers/models/info.py
+@@ -35,7 +35,7 @@ try:
+ 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+ 	from enigma import getEnigmaVersionString
+ except:  # noqa: E722
+-	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd
++	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+ 
+ 	def getEnigmaVersionString():
+ 		return about.getEnigmaVersionString()
+@@ -189,10 +189,6 @@ def getInfo(session=None, need_fullinfo=False):
+ 	info['model'] = getMachineName()
+ 	info['boxtype'] = getBoxType()
+ 	info['machinebuild'] = getMachineBuild()
+-	try:
+-		info['lcd'] = getLcd()
+-	except: # temporary due OE-A
+-		info['lcd'] = 0
+ 
+ 	chipset = "unknown"
+ 	if fileExists("/etc/.box"):
