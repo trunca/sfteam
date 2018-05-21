@@ -66,7 +66,7 @@ SRC_URI_append_sh4 += " file://revert_grab_for_sh4.patch "
 SRC_URI_append += " git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models "
 
 SRCREV_FORMAT = "${MODULE}"
-SRCREV[extra_rc_models] = "${AUTOREV}"
+SRCREV_extra_rc_models_pn-${PN} = "${AUTOREV}"
 
 python do_cleanup () {
     # contains: MACHINE, box image, remote image, remote map
