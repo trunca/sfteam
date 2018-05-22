@@ -3,11 +3,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 inherit upx_compress
 
 SRC_URI_append += " \
-	${@bb.utils.contains("TARGET_ARCH", "sh4", "", "git://github.com/PLi-metas/extra_rc_models.git;destsuffix=extra_rc_models;name=extra_rc_models", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "sh4", "", "git://github.com/PLi-metas/extra_rc_models.git;protocol=git;destsuffix=extra_rc_models;name=extrarcmodels", d)} \
         "
 
-SRCREV[extra_rc_models] = "${AUTOREV}"
-SRCREV_FORMAT = "enigma2"
+SRCREV_extrarcmodels_pn-${PN} = "${AUTOREV}"
+SRCREV_FORMAT = "enigma2_extrarcmodels"
 
 do_configure_prepend() {
 	if [ ! "${TARGET_ARCH}" == "sh4" ]
