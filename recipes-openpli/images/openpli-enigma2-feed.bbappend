@@ -18,6 +18,7 @@ ENIGMA2_OPTIONAL_append = " \
 	enigma2-plugin-skins-kravenvb \
 	enigma2-plugin-skins-sevenhd \
 	enigma2-plugin-skins-xionhdf \
+	enigma2-plugin-systemplugins-bh-skin-support \
 	"
 
 OPTIONAL_PACKAGES_append = " \
