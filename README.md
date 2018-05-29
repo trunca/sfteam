@@ -1,6 +1,7 @@
 # Extra repositories for PLi's OE: https://github.com/OpenPLi/openpli-oe-core
 
 ## Amlogic:
+* alien5
 * wetekplay
 * wetekplay2
 * x8hp
