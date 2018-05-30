@@ -2,6 +2,7 @@
 
 ## Amlogic:
 * alien5
+* k1pro
 * wetekplay
 * wetekplay2
 * x8hp
