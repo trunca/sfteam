@@ -8,7 +8,7 @@
 * x8hp
 
 ## AZBox:
-* azboxhd (smallflash type, read line #184)
+* azboxhd (smallflash type)
 * azboxme
 * azboxminime
 
@@ -84,15 +84,15 @@
 * mediabox4k
 
 ## Dreambox:
-* dm500hd (smallflash type, read line #184)
+* dm500hd (smallflash type)
 * dm500hdv2
 * dm520
 * dm7020hd
 * dm7020hdv2
 * dm7080
-* dm800 (smallflash type, read line #184)
+* dm800 (smallflash type)
 * dm8000
-* dm800se (smallflash type, read line #184)
+* dm800se (smallflash type)
 * dm800sev2
 * dm820
 * dm900
