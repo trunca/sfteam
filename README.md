@@ -188,10 +188,6 @@ export BBPATH=/location/openpli-oe-core/bitbake/bin
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
 
-* Add the following line to your "meta-openpli/conf/distro/openpli-common.conf" file:
-```
-LOCALE_GENERATION_WITH_CROSS-LOCALEDEF_forcevariable = "0"
-```
 2. Enter the openpli-oe-core directory:
 * cd openpli-oe-core
 
