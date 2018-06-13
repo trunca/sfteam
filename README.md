@@ -8,7 +8,7 @@
 * x8hp
 
 ## AZBox:
-* azboxhd (smallflash type)
+* azboxhd
 * azboxme
 * azboxminime
 
@@ -38,6 +38,7 @@
 * force2se
 * force3uhd
 * force3uhdplus
+* force4
 * iqonios100hd
 * iqonios200hd
 * iqonios300hd
@@ -84,15 +85,15 @@
 * mediabox4k
 
 ## Dreambox:
-* dm500hd (smallflash type)
+* dm500hd
 * dm500hdv2
 * dm520
 * dm7020hd
 * dm7020hdv2
 * dm7080
-* dm800 (smallflash type)
+* dm800
 * dm8000
-* dm800se (smallflash type)
+* dm800se
 * dm800sev2
 * dm820
 * dm900
@@ -182,15 +183,6 @@ export PATH=/location/openpli-oe-core/bitbake/bin:$PATH
 export BBPATH=/location/openpli-oe-core/bitbake/bin
 ```
 (Replace "location" with your path)
-
-## How to build compressed images for "smallflash" STBs:
-* Add the following lines to your "meta-openpli/conf/distro/openpli-common.conf" file:
-```
-FULL_OPTIMIZATION_azboxhd = "-Os -pipe ${DEBUG_FLAGS}"
-FULL_OPTIMIZATION_dm500hd = "-Os -pipe ${DEBUG_FLAGS}"
-FULL_OPTIMIZATION_dm800 = "-Os -pipe ${DEBUG_FLAGS}"
-FULL_OPTIMIZATION_dm800se = "-Os -pipe ${DEBUG_FLAGS}"
-```
 
 ## How to build an image (Example: dm800):
 1. Clone openpli-oe-core somewhere:
