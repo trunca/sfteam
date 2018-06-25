@@ -1,18 +1,18 @@
 # Extra repositories for PLi's OE: https://github.com/OpenPLi/openpli-oe-core
 
-## Amlogic:
+## Amlogic
 * alien5
 * k1pro
 * wetekplay
 * wetekplay2
 * x8hp
 
-## AZBox:
+## AZBox
 * azboxhd
 * azboxme
 * azboxminime
 
-## Ceryon:
+## Ceryon
 * 9910lx
 * 9911lx
 * e4hd
@@ -28,7 +28,7 @@
 * twinboxlcd
 * twinboxlcdci5
 
-## DAGS:
+## DAGS
 * force1
 * force1plus
 * force2
@@ -73,7 +73,7 @@
 * worldvisionf1
 * worldvisionf1plus
 
-## Dinobot:
+## Dinobot
 * anadol4k
 * axashis4kcombo
 * axashis4kcomboplus
@@ -84,7 +84,7 @@
 * dinobot4kse
 * mediabox4k
 
-## Dreambox:
+## Dreambox
 * dm500hd
 * dm500hdv2
 * dm520
@@ -99,7 +99,7 @@
 * dm900
 * dm920
 
-## Entwopia:
+## Entwopia
 * bre2ze
 * enfinity
 * evomini
@@ -108,11 +108,11 @@
 * viperslim
 * x2plus
 
-## Fulan:
+## Fulan
 * spark
 * spark7162
 
-## INI:
+## INI
 * atemio5x00
 * atemio6000
 * atemio6100
@@ -139,11 +139,11 @@
 * xpeedlx3
 * xsolomini3
 
-## Octagon:
+## Octagon
 * sf4008
 * sf5008
 
-## Odin:
+## Odin
 * axase3
 * axase3c
 * axodin
@@ -157,34 +157,27 @@
 * maram9
 * starsatlx
 
-## Raspberry Pi:
+## Raspberry Pi
 * raspberrypi
 * raspberrypi0
 * raspberrypi2
 * raspberrypi3
 
-## XCore:
+## XCore
 * bcm7358
 * spycat4k
 * spycat4kcombo
 * spycat4kmini
 * vp7358ci (Sample)
 
-## Ubuntu 18.04 LTS setup:
+## Ubuntu 18.04 LTS setup
 * sudo dpkg-reconfigure dash
 
 Answer: No
 
 * sudo apt-get install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git gzip help2man ncurses-bin libncurses5-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html wget chrpath libxml2-utils xsltproc python-setuptools libc6 genromfs mtd-utils dpkg-dev sshpass poedit translate-toolkit xclip linux-firmware linux-headers-`uname -r` linux-headers-generic linux-image-generic linux-libc-dev linux-source u-boot-tools upx-ucl doxygen repo optipng python-dev libglib2.0-dev pngquant default-jdk
 
-* (Optional) bitbake fix:
-```
-export PATH=/location/openpli-oe-core/bitbake/bin:$PATH
-export BBPATH=/location/openpli-oe-core/bitbake/bin
-```
-(Replace "location" with your path)
-
-## How to build an image (Example: dm800):
+## How to build an image (Example: dm800)
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
 
