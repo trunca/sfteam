@@ -1,1 +1,1 @@
-SRC_URI = "https://code.videolan.org/videolan/bitstream.git"
+SRC_URI = "git://github.com/PLi-metas/bitstream.git"
