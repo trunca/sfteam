@@ -25,7 +25,7 @@ git checkout develop
 git pull
 cd ..
 cd meta-dream
-git checkout develop
+git checkout sumo
 git pull
 cd ..
 cd meta-entwopia
@@ -33,7 +33,7 @@ git checkout develop
 git pull
 cd ..
 cd meta-fulan
-git checkout develop
+git checkout sumo
 git pull
 cd ..
 cd meta-ini
@@ -49,7 +49,7 @@ git checkout develop
 git pull
 cd ..
 cd meta-raspberrypi
-git checkout develop
+git checkout sumo
 git pull
 cd ..
 cd meta-xcore
