@@ -6,12 +6,12 @@ DEPENDS += "rc-models"
 
 inherit upx_compress
 
-SRC_URI_append += " \
-	${@bb.utils.contains("TARGET_ARCH", "sh4", "", "git://github.com/PLi-metas/extra_rc_models.git;protocol=git;destsuffix=extra_rc_models;name=extrarcmodels", d)} \
-        "
+SRC_URI = " git://github.com/OpenPLi/enigma2.git;branch=develop;name=enigma2 \
+			${@bb.utils.contains("TARGET_ARCH", "sh4", "", "git://github.com/PLi-metas/extra_rc_models.git;protocol=git;destsuffix=extra_rc_models;name=extrarcmodels", d)} \
+			"
 
 SRCREV_extrarcmodels_pn-${PN} = "${AUTOREV}"
-SRCREV_FORMAT = "enigma2_extrarcmodels"
+SRCREV_FORMAT = "enigma2"
 
 do_configure_prepend() {
 	if [ ! "${TARGET_ARCH}" == "sh4" ]
