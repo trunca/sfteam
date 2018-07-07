@@ -25,11 +25,11 @@ PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 
 SRCREV = "${AUTOREV}"
-SRCREV_FORMAT = "${MODULE}_extrarcmodels"
+SRCREV_FORMAT = "${MODULE}"
 SRCREV_extrarcmodels_pn-${PN} = "${AUTOREV}"
 
 SRC_URI = "\
-	git://github.com/E2OpenPlugins/e2openplugin-${MODULE}.git;protocol=git \
+	git://github.com/E2OpenPlugins/e2openplugin-${MODULE}.git;protocol=git;name=${MODULE} \
 	git://github.com/PLi-metas/extra_rc_models.git;protocol=git;destsuffix=extra_rc_models;name=extrarcmodels \
 	"
 
