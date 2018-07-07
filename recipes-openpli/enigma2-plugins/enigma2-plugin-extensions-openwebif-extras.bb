@@ -4,7 +4,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://README;firstline=10;lastline=12;md5=9c14f792d0aeb54e15490a28c89087f7"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-DEPENDS = "python-cheetah-native"
+DEPENDS = "python-cheetah-native rc-models"
 
 RDEPENDS_${PN} = "\
 	aio-grab \

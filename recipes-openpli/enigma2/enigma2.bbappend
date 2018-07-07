@@ -1,5 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+DEPENDS += "rc-models" 
+
 inherit upx_compress
 
 SRC_URI = " git://github.com/OpenPLi/enigma2.git;branch=develop;name=enigma2 \
