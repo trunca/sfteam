@@ -15,6 +15,10 @@
 * azboxme
 * azboxminime
 
+# BlackBox
+* sogno8800hd
+* uniboxhde
+
 # Ceryon
 * 9910lx
 * 9911lx
