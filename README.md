@@ -142,6 +142,10 @@
 * xpeedlx3
 * xsolomini3
 
+# IXUSS
+* ixussone
+* ixusszero
+
 # Octagon
 * sf4008
 * sf5008
