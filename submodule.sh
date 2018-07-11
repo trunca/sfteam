@@ -12,6 +12,10 @@ cd meta-azbox
 git checkout develop
 git pull
 cd ..
+cd meta-blackbox
+git checkout develop
+git pull
+cd ..
 cd meta-ceryon
 git checkout develop
 git pull
@@ -37,6 +41,10 @@ git checkout develop
 git pull
 cd ..
 cd meta-ini
+git checkout develop
+git pull
+cd ..
+cd meta-ixuss
 git checkout develop
 git pull
 cd ..
