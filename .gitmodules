@@ -40,3 +40,6 @@
 [submodule "meta-ixuss"]
 	path = meta-ixuss
 	url = https://github.com/PLi-metas/meta-ixuss.git
+[submodule "meta-blackbox"]
+	path = meta-blackbox
+	url = https://github.com/PLi-metas/meta-blackbox.git
