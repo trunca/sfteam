@@ -37,3 +37,6 @@
 [submodule "meta-azbox"]
 	path = meta-azbox
 	url = https://github.com/PLi-metas/meta-azbox.git
+[submodule "meta-ixuss"]
+	path = meta-ixuss
+	url = https://github.com/PLi-metas/meta-ixuss.git
