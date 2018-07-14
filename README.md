@@ -10,6 +10,10 @@
 * wetekplay2
 * x8hp
 
+# AX
+* triplex
+* ultrabox
+
 # AZBox
 * azboxhd
 * azboxme
