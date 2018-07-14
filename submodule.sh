@@ -36,6 +36,10 @@ cd meta-dream
 git checkout develop
 git pull
 cd ..
+cd meta-ebox
+git checkout develop
+git pull
+cd ..
 cd meta-entwopia
 git checkout develop
 git pull
