@@ -49,3 +49,6 @@
 [submodule "meta-ebox"]
 	path = meta-ebox
 	url = https://github.com/PLi-metas/meta-ebox.git
+[submodule "meta-protek"]
+	path = meta-protek
+	url = https://github.com/PLi-metas/meta-protek.git
