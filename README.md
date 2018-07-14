@@ -178,11 +178,18 @@
 * maram9
 * starsatlx
 
+# Protek
+* 9900lx
+
 # Raspberry Pi
 * raspberrypi
 * raspberrypi0
 * raspberrypi2
 * raspberrypi3
+
+# Tiviar
+* tiviaraplus
+* tiviarmin
 
 # XCore
 * bcm7358
