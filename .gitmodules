@@ -43,3 +43,6 @@
 [submodule "meta-blackbox"]
 	path = meta-blackbox
 	url = https://github.com/PLi-metas/meta-blackbox.git
+[submodule "meta-ax"]
+	path = meta-ax
+	url = https://github.com/PLi-metas/meta-ax.git
