@@ -110,6 +110,12 @@
 * dm900
 * dm920
 
+# EBox
+* ebox5000
+* ebox5100
+* ebox7358
+* eboxlumi
+
 # Entwopia
 * bre2ze
 * enfinity
@@ -183,7 +189,7 @@
 * spycat4k
 * spycat4kcombo
 * spycat4kmini
-* vp7358ci (Sample)
+* vp7358ci
 
 # Ubuntu 18.04 LTS setup
 * sudo dpkg-reconfigure dash
