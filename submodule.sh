@@ -8,6 +8,10 @@ cd meta-amlogic
 git checkout develop
 git pull
 cd ..
+cd meta-ax
+git checkout develop
+git pull
+cd ..
 cd meta-azbox
 git checkout develop
 git pull
