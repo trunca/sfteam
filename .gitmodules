@@ -46,3 +46,6 @@
 [submodule "meta-ax"]
 	path = meta-ax
 	url = https://github.com/PLi-metas/meta-ax.git
+[submodule "meta-ebox"]
+	path = meta-ebox
+	url = https://github.com/PLi-metas/meta-ebox.git
