@@ -52,3 +52,6 @@
 [submodule "meta-protek"]
 	path = meta-protek
 	url = https://github.com/PLi-metas/meta-protek.git
+[submodule "meta-tiviar"]
+	path = meta-tiviar
+	url = https://github.com/PLi-metas/meta-tiviar.git
