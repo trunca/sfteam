@@ -64,7 +64,15 @@ cd meta-odin
 git checkout develop
 git pull
 cd ..
+cd meta-protek
+git checkout develop
+git pull
+cd ..
 cd meta-raspberrypi
+git checkout develop
+git pull
+cd ..
+cd meta-tiviar
 git checkout develop
 git pull
 cd ..
