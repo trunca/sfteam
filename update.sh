@@ -15,6 +15,24 @@ git submodule sync
 git submodule update --init
 METAS="$( ls | grep meta- | tr '\n' ' ' | sed 's/ $//g' )"
 cd ..
+echo ""
+echo "Check for dm7020hdv2 required changes ..."
+if grep -Fqi "DMTYPE" Makefile
+then
+    echo ""
+    echo "No need to modify Makefile."
+    echo "You can compile dm7020hdv2 image too."
+    echo ""
+else
+    echo ""
+    echo "We need to modify Makefile ..."
+    find -maxdepth 1 -name "Makefile" -type f -exec sed -i 's/$(MACHINE)/$(MACHINE)$(DMTYPE)/g' {} \;
+    find -maxdepth 1 -name "Makefile" -type f -exec sed -i 's/"MACHINE"/"MACHINE DMTYPE"/g' {} \;
+    find -maxdepth 1 -name "Makefile" -type f -exec sed -i "s/.@echo 'export MACHINE' >> $@.*/&\n\t@echo 'export DMTYPE' >> \$\@/" {} \;
+    cat pli-extras/Makefile-dm7020hdv2 >> Makefile
+    echo "Done, now you can compile dm7020hdv2 image too."
+    echo ""
+fi
 # Regenerate bblayers.conf so we can add our own
 rm -f build/conf/bblayers.conf
 make init update
