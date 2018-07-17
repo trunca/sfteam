@@ -15,6 +15,7 @@ git submodule sync
 git submodule update --init
 METAS="$( ls | grep meta- | tr '\n' ' ' | sed 's/ $//g' )"
 cd ..
+rm -f build/env.source
 echo ""
 echo "Check for dm7020hdv2 required changes ..."
 if grep -Fqi "DMTYPE" Makefile
