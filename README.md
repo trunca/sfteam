@@ -141,7 +141,6 @@
 * bwidowx
 * bwidowx2
 * evoslim
-* heroboxex4hd
 * mbhybrid
 * mbmini
 * mbminiplus
@@ -154,7 +153,6 @@
 * ventonhdx
 * xpeedlx
 * xpeedlx3
-* xsolomini3
 
 # IXUSS
 * ixussone
