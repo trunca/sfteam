@@ -76,6 +76,10 @@ cd meta-tiviar
 git checkout develop
 git pull
 cd ..
+cd meta-tripledot
+git checkout develop
+git pull
+cd ..
 cd meta-xcore
 git checkout develop
 git pull
