@@ -189,6 +189,18 @@
 * tiviaraplus
 * tiviarmin
 
+# Tripledot
+* enibox
+* evoslimse
+* evoslimt2c
+* mago
+* sf108
+* sf98
+* t2cable
+* tyrant
+* x1plus
+* xcombo
+
 # XCore
 * bcm7358
 * spycat4k
