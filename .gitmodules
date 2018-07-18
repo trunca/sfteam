@@ -55,3 +55,6 @@
 [submodule "meta-tiviar"]
 	path = meta-tiviar
 	url = https://github.com/PLi-metas/meta-tiviar.git
+[submodule "meta-tripledot"]
+	path = meta-tripledot
+	url = https://github.com/PLi-metas/meta-tripledot.git
