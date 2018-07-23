@@ -58,3 +58,6 @@
 [submodule "meta-tripledot"]
 	path = meta-tripledot
 	url = https://github.com/PLi-metas/meta-tripledot.git
+[submodule "meta-cube"]
+	path = meta-cube
+	url = https://github.com/PLi-metas/meta-cube.git
