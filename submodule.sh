@@ -24,6 +24,10 @@ cd meta-ceryon
 git checkout develop
 git pull
 cd ..
+cd meta-cube
+git checkout develop
+git pull
+cd ..
 cd meta-dags
 git checkout develop
 git pull
