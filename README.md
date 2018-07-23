@@ -5,6 +5,7 @@
 * k1plus
 * k1pro
 * k2pro
+* k2pro_s905
 * k3pro
 * wetekplay
 * wetekplay2
@@ -38,6 +39,9 @@
 * singleboxlcd
 * twinboxlcd
 * twinboxlcdci5
+
+# Cube
+* cube
 
 # DAGS
 * force1
