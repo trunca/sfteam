@@ -1,6 +1,6 @@
 #!/bin/sh
 echo ""
-echo "pli-extras by MastaG, Persian Prince and Hains"
+echo "pli-extras by MastaG, Persian Prince, Hains and moham96"
 echo ""
 echo "https://github.com/PLi-metas"
 echo ""
