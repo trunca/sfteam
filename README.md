@@ -227,7 +227,7 @@ Answer: No
 * cd openpli-oe-core
 
 3. Clone pli-extras:
-* git clone https://github.com/PLi-metas/pli-extras.git
+* git clone -b develop https://github.com/PLi-metas/pli-extras.git
 
 4. Initialize and update all repositories:
 * pli-extras/update.sh
