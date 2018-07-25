@@ -4,8 +4,8 @@
 * alien5
 * k1plus
 * k1pro
-* k2pro_s905
-* k2pro_s905D
+* k2pro
+* k2prov2
 * k3pro
 * wetekplay
 * wetekplay2
