@@ -19,6 +19,7 @@ ENIGMA2_OPTIONAL_append = " \
 	enigma2-plugin-skins-sevenhd \
 	enigma2-plugin-skins-xionhdf \
 	enigma2-plugin-systemplugins-bh-skin-support \
+	${@bb.utils.contains('MACHINE_FEATURES', 'qtplugins', 'enigma2-plugin-extensions-qthbbtv enigma2-plugin-extensions-qtstalker', '', d)} \
 	"
 
 OPTIONAL_PACKAGES_append = " \
