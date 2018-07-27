@@ -42,6 +42,6 @@ make init update
 sed -i "s# $(pwd)/meta-dream##g" build/conf/bblayers.conf
 for i in ${METAS}
 do
-	sed -E -i "s%^(BBLAYERS =.*)(\"$)%\1 ${SCRIPTPATH}/${i}\"%g" build/conf/bblayers.conf
+    echo "BBLAYERS_append = \" ${SCRIPTPATH}/${i}\"" >> build/conf/bblayers.conf
 done
-sed -E -i "s%^(BBLAYERS =.*)(\"$)%\1 ${SCRIPTPATH}\"%g" build/conf/bblayers.conf
+echo "BBLAYERS_append = \" ${SCRIPTPATH}\"" >> build/conf/bblayers.conf
