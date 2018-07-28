@@ -1,8 +1,8 @@
-OPTIONAL_PACKAGES += " \
+OPTIONAL_PACKAGES += "\
 	sshfs-fuse \
 	"
 
-ENIGMA2_OPTIONAL_append = " \
+ENIGMA2_OPTIONAL_append += "\
 	enigma2-plugin-extensions-dreamplex \
 	enigma2-plugin-extensions-install-ffmpeg \
 	enigma2-plugin-extensions-install-exteplayer3 \
@@ -22,7 +22,7 @@ ENIGMA2_OPTIONAL_append = " \
 	${@bb.utils.contains('MACHINE_FEATURES', 'qtplugins', 'enigma2-plugin-extensions-qthbbtv enigma2-plugin-extensions-qtstalker', '', d)} \
 	"
 
-OPTIONAL_PACKAGES_append = " \
+OPTIONAL_PACKAGES_append += "\
 	enigma2-plugin-extensions-backupsuite \
 	smbnetfs \
 	upx \
