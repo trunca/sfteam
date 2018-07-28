@@ -27,6 +27,8 @@ ENIGMA2_PLUGINS_append += "\
 	${@bb.utils.contains('MACHINE_FEATURES', 'fan', 'enigma2-plugin-systemplugins-extrafancontrol', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', '7seg', 'enigma2-plugin-systemplugins-vfdcontrol', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', '7segment', 'enigma2-plugin-systemplugins-vfdcontrol', '', d)} \
+	${@bb.utils.contains('MACHINE_FEATURES', 'multitranscoding', 'enigma2-plugin-systemplugins-transcodingsetup', '', d)} \
+	${@bb.utils.contains('MACHINE_FEATURES', 'fanctrl', 'enigma2-plugin-extensions-fancontrol2', '', d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	enigma2-plugin-extensions-openwebif-extras-vti-theme \
 	enigma2-plugin-softcams-oscam \
@@ -35,5 +37,5 @@ ENIGMA2_PLUGINS_append += "\
 
 IMAGE_INSTALL_append += "\
 	${RT7777} \
-	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \	
+	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
 	"
