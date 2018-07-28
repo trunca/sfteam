@@ -7,6 +7,7 @@
 * k2pro
 * k2prov2
 * k3pro
+* wetekhub
 * wetekplay
 * wetekplay2
 * x8hp
