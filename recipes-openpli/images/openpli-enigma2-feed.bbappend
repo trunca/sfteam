@@ -1,7 +1,3 @@
-OPTIONAL_PACKAGES += "\
-	sshfs-fuse \
-	"
-
 ENIGMA2_OPTIONAL_append += "\
 	enigma2-plugin-extensions-dreamplex \
 	enigma2-plugin-extensions-install-ffmpeg \
@@ -27,5 +23,6 @@ OPTIONAL_PACKAGES_append += "\
 	lirc \
 	iptraf \
 	smbnetfs \
+	sshfs-fuse \
 	upx \
 	"
