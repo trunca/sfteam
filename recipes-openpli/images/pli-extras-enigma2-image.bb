@@ -1,4 +1,4 @@
-require openpli-image.bb
+require ../../../meta-openpli/recipes-openpli/images/openpli-image.bb
 
 KERNEL_WIFI_DRIVERS += "\
 	firmware-carl9170 \
@@ -52,7 +52,8 @@ ENIGMA2_PLUGINS += "\
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-osdpositionsetup \
-  enigma2-plugin-extensions-backupsuite \
+	enigma2-plugin-extensions-backupsuite \
+	enigma2-plugin-extensions-cacheflush \
 	${@bb.utils.contains("MACHINE_FEATURES", "3dtv", "enigma2-plugin-systemplugins-osd3dsetup" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "dvb-c", "enigma2-plugin-systemplugins-cablescan" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "hdmicec", "enigma2-plugin-systemplugins-hdmicec" , "", d)} \
@@ -66,6 +67,9 @@ ENIGMA2_PLUGINS += "\
 	${@bb.utils.contains('MACHINE_FEATURES', 'fanctrl', 'enigma2-plugin-extensions-fancontrol2', '', d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	enigma2-plugin-extensions-openwebif-extras-vti-theme \
+	enigma2-plugin-extensions-xmodem \
+	enigma2-plugin-extensions-foreca \
+	enigma2-plugin-extensions-dlnabrowser \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu", d)} \
 	"
@@ -92,6 +96,11 @@ IMAGE_INSTALL += "\
 	${@bb.utils.contains("MACHINE_FEATURES", "extrakernelwifi", "${EXTRA_KERNEL_WIFI_DRIVERS}", "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "externalwifi", "${EXTERNAL_WIFI_DRIVERS}", "", d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
+	busybox-cron \
+	ntp \
+	util-linux-lscpu \
+	iptraf", d)} \
 	"
 
 export IMAGE_BASENAME = "pli-extras-enigma2"
