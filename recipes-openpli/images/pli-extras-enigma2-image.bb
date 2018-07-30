@@ -99,6 +99,13 @@ IMAGE_INSTALL += "\
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	busybox-cron \
 	ntp \
+	astra-sm \
+	dvbsnoop \
+	hddtemp \
+	ntfs-3g \
+	parted \
+	strace \
+	wscan \
 	util-linux-lscpu \
 	iptraf", d)} \
 	"
