@@ -24,7 +24,8 @@ ENIGMA2_OPTIONAL_append += "\
 	"
 
 OPTIONAL_PACKAGES_append += "\
-	enigma2-plugin-extensions-backupsuite \
+	lirc \
+	iptraf \
 	smbnetfs \
 	upx \
 	"
