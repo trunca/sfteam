@@ -135,7 +135,7 @@ echo ""
 git add meta-*
 git commit --dry-run
 read -p "The above changes will be committed and pushed, [A]bort [P]roceed: " choice
-if [[ $choice == "P" || $choice == "p" ]];then
+if [ "$choice" = "P" -o "$choice" = "p" ];then
 	git commit -S -m "Update submodules"
 	echo "Stage 3: git push for new changes"
 	echo ""
