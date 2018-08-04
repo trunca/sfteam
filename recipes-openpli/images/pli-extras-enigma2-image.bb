@@ -41,7 +41,6 @@ ENIGMA2_PLUGINS += "\
 	enigma2-plugin-extensions-moviecut \
 	enigma2-plugin-extensions-openwebif-extras \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-extensions-ppanel \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-hotplug \
 	enigma2-plugin-systemplugins-networkbrowser \
@@ -70,6 +69,11 @@ ENIGMA2_PLUGINS += "\
 	enigma2-plugin-extensions-xmodem \
 	enigma2-plugin-extensions-foreca \
 	enigma2-plugin-extensions-dlnabrowser \
+	enigma2-plugin-extensions-filebrowser \
+	enigma2-plugin-extensions-vlcplayer \
+	enigma2-plugin-systemplugins-systemtime \
+	enigma2-plugin-systemplugins-setpasswd \
+	enigma2-plugin-extensions-reconstructapsc \
 	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu", d)} \
 	"
