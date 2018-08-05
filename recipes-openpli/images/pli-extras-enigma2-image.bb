@@ -109,6 +109,7 @@ IMAGE_INSTALL += "\
 	ntfs-3g \
 	parted \
 	strace \
+	nbench-byte \
 	wscan \
 	util-linux-lscpu \
 	iptraf", d)} \
