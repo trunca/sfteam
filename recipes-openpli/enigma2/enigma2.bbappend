@@ -1,10 +1,12 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_append += "${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)}"
+SRC_URI_append += "\
+	file://defaultskin.patch \
+	${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)} \
+	${@bb.utils.contains("IMAGE_BASENAME", "pli-extras-enigma2", "file://prince.patch", "", d)} \
+	"
 
-SRC_URI_append += "file://defaultskin.patch"
-
-DEPENDS += "rc-models" 
+DEPENDS += "rc-models"
 
 inherit upx_compress
 

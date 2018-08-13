@@ -1,0 +1,323 @@
+diff -Naur enigma2-PLi/lib/driver/hdmi_cec.cpp enigma2-PersianPrince/lib/driver/hdmi_cec.cpp
+--- enigma2-PLi/lib/driver/hdmi_cec.cpp	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/driver/hdmi_cec.cpp	2018-08-13 13:01:36.620318262 +0430
+@@ -501,6 +501,12 @@
+ 		case 0x0d:
+ 			key = 0xae;
+ 			break;
++		case 0x4c:
++			key = 0x193;
++			break;
++		case 0x4b:
++			key = 0x192;
++			break;
+ 		case 0x72:
+ 			key = 0x18e;
+ 			break;
+diff -Naur enigma2-PLi/lib/dvb/epgcache.cpp enigma2-PersianPrince/lib/dvb/epgcache.cpp
+--- enigma2-PLi/lib/dvb/epgcache.cpp	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/dvb/epgcache.cpp	2018-08-13 14:55:47.907995525 +0430
+@@ -30,7 +30,7 @@
+ /* Interval between "garbage collect" cycles */
+ #define CLEAN_INTERVAL 60000    //  1 min
+ /* Restart EPG data capture */
+-#define UPDATE_INTERVAL 3600000  // 60 min
++#define UPDATE_INTERVAL 60000 // 1 min
+ /* Time to wait after tuning in before EPG data capturing starts */
+ #define ZAP_DELAY 2000          // 2 sec
+ 
+diff -Naur enigma2-PLi/lib/python/Components/AVSwitch.py enigma2-PersianPrince/lib/python/Components/AVSwitch.py
+--- enigma2-PLi/lib/python/Components/AVSwitch.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/AVSwitch.py	2018-08-13 12:40:46.385946042 +0430
+@@ -111,7 +111,7 @@
+ 			policy2_choices.update({"auto": _("Auto")})
+ 	except:
+ 		pass
+-	config.av.policy_169 = ConfigSelection(choices=policy2_choices, default = "letterbox")
++	config.av.policy_169 = ConfigSelection(choices=policy2_choices, default = "scale")
+ 	policy_choices = {
+ 	# TRANSLATORS: (aspect ratio policy: black bars on left/right) in doubt, keep english term.
+ 	"pillarbox": _("Pillarbox"),
+@@ -137,7 +137,7 @@
+ 			policy_choices.update({"auto": _("Auto")})
+ 	except:
+ 		pass
+-	config.av.policy_43 = ConfigSelection(choices=policy_choices, default = "pillarbox")
++	config.av.policy_43 = ConfigSelection(choices=policy_choices, default = "scale")
+ 	config.av.tvsystem = ConfigSelection(choices = {"pal": _("PAL"), "ntsc": _("NTSC"), "multinorm": _("multinorm")}, default="pal")
+ 	config.av.wss = ConfigEnableDisable(default = True)
+ 	config.av.generalAC3delay = ConfigSelectionNumber(-1000, 1000, 5, default = 0)
+diff -Naur enigma2-PLi/lib/python/Components/Network.py enigma2-PersianPrince/lib/python/Components/Network.py
+--- enigma2-PLi/lib/python/Components/Network.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/Network.py	2018-08-13 12:47:38.125713914 +0430
+@@ -421,7 +421,7 @@
+ 	def checkNetworkState(self,statecallback):
+ 		self.NetworkState = 0
+ 		self.pingConsole = Console()
+-		for server in ("www.openpli.org", "www.google.nl", "www.google.com"):
++		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
+ 			self.pingConsole.ePopen(("/bin/ping", "/bin/ping", "-c", "1", server), self.checkNetworkStateFinished,statecallback)
+ 
+ 	def checkNetworkStateFinished(self, result, retval,extra_args):
+@@ -493,7 +493,7 @@
+ 	def checkDNSLookup(self,statecallback):
+ 		self.DnsState = 0
+ 		self.dnsConsole = Console()
+-		for server in ("www.openpli.org", "www.google.nl", "www.google.com"):
++		for server in ("www.google.com", "www.bing.com", "www.microsoft.com"):
+ 			self.dnsConsole.ePopen(("/usr/bin/nslookup", "/usr/bin/nslookup", server), self.checkDNSLookupFinished, statecallback)
+ 
+ 	def checkDNSLookupFinished(self, result, retval,extra_args):
+diff -Naur enigma2-PLi/lib/python/Components/NimManager.py enigma2-PersianPrince/lib/python/Components/NimManager.py
+--- enigma2-PLi/lib/python/Components/NimManager.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/NimManager.py	2018-08-13 12:46:10.253841495 +0430
+@@ -1568,7 +1568,7 @@
+ 					"enabled": _("enabled"),
+ 					"nothing": _("disabled"),
+ 					},
+-				default = "enabled")
++				default = "nothing")
+ 			createCableConfig(nim, x)
+ 		elif slot.isCompatible("DVB-T"):
+ 			nim.configMode = ConfigSelection(
+@@ -1576,7 +1576,7 @@
+ 					"enabled": _("enabled"),
+ 					"nothing": _("disabled"),
+ 					},
+-				default = "enabled")
++				default = "nothing")
+ 			createTerrestrialConfig(nim, x)
+ 		elif slot.isCompatible("ATSC"):
+ 			nim.configMode = ConfigSelection(
+@@ -1584,7 +1584,7 @@
+ 					"enabled": _("enabled"),
+ 					"nothing": _("disabled"),
+ 					},
+-				default = "enabled")
++				default = "nothing")
+ 			createATSCConfig(nim, x)
+ 		else:
+ 			empty_slots += 1
+diff -Naur enigma2-PLi/lib/python/Components/Sources/FrontendStatus.py enigma2-PersianPrince/lib/python/Components/Sources/FrontendStatus.py
+--- enigma2-PLi/lib/python/Components/Sources/FrontendStatus.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/Sources/FrontendStatus.py	2018-08-13 12:45:02.640230690 +0430
+@@ -21,6 +21,8 @@
+ 			self.invalidate()
+ 		else:
+ 			self.snr = status.get("tuner_signal_quality")
++			if self.snr < 0:
++				self.snr = 65536
+ 			self.snr_db = status.get("tuner_signal_quality_db")
+ 			self.agc = status.get("tuner_signal_power")
+ 			self.ber = status.get("tuner_bit_error_rate")
+diff -Naur enigma2-PLi/lib/python/Components/Timezones.py enigma2-PersianPrince/lib/python/Components/Timezones.py
+--- enigma2-PLi/lib/python/Components/Timezones.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/Timezones.py	2018-08-13 12:42:12.680019093 +0430
+@@ -47,7 +47,7 @@
+ 
+ 	def getDefaultTimezone(self):
+ 		# TODO return something more useful - depending on country-settings?
+-		t = "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Vienna"
++		t = "(GMT+03:30) Tehran"
+ 		for (a,b) in self.timezones:
+ 			if a == t:
+ 				return a
+diff -Naur enigma2-PLi/lib/python/Components/UsageConfig.py enigma2-PersianPrince/lib/python/Components/UsageConfig.py
+--- enigma2-PLi/lib/python/Components/UsageConfig.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/UsageConfig.py	2018-08-13 12:35:47.068656039 +0430
+@@ -27,11 +27,11 @@
+ 	config.usage.hide_number_markers = ConfigYesNo(default = True)
+ 	config.usage.hide_number_markers.addNotifier(refreshServiceList)
+ 
+-	config.usage.servicetype_icon_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
++	config.usage.servicetype_icon_mode = ConfigSelection(default = "1", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
+ 	config.usage.servicetype_icon_mode.addNotifier(refreshServiceList)
+-	config.usage.crypto_icon_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
++	config.usage.crypto_icon_mode = ConfigSelection(default = "2", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename"))])
+ 	config.usage.crypto_icon_mode.addNotifier(refreshServiceList)
+-	config.usage.record_indicator_mode = ConfigSelection(default = "0", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename")), ("3", _("Red colored"))])
++	config.usage.record_indicator_mode = ConfigSelection(default = "3", choices = [("0", _("None")), ("1", _("Left from servicename")), ("2", _("Right from servicename")), ("3", _("Red colored"))])
+ 	config.usage.record_indicator_mode.addNotifier(refreshServiceList)
+ 
+ 	choicelist = [("-1", _("Disable"))]
+@@ -40,7 +40,7 @@
+ 	config.usage.servicelist_column = ConfigSelection(default="-1", choices=choicelist)
+ 	config.usage.servicelist_column.addNotifier(refreshServiceList)
+ 
+-	config.usage.service_icon_enable = ConfigYesNo(default = False)
++	config.usage.service_icon_enable = ConfigYesNo(default = True)
+ 	config.usage.service_icon_enable.addNotifier(refreshServiceList)
+ 	config.usage.servicelist_cursor_behavior = ConfigSelection(default = "standard", choices = [
+ 		("standard", _("Standard")),
+@@ -57,7 +57,7 @@
+ 	config.usage.multiepg_ask_bouquet = ConfigYesNo(default = False)
+ 
+ 	config.usage.quickzap_bouquet_change = ConfigYesNo(default = False)
+-	config.usage.e1like_radio_mode = ConfigYesNo(default = True)
++	config.usage.e1like_radio_mode = ConfigYesNo(default = False)
+ 	choicelist = [("0", _("No timeout"))]
+ 	for i in range(1, 12):
+ 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
+@@ -80,13 +80,13 @@
+ 		("a_z", _("alphabetical")),
+ 		("default", _("Default")),
+ 		("user", _("user defined")),])
+-	config.usage.menu_show_numbers = ConfigYesNo(default = False)
++	config.usage.menu_show_numbers = ConfigYesNo(default = True)
+ 	config.usage.menu_path = ConfigSelection(default = "off", choices = [
+ 		("off", _("Disabled")),
+ 		("small", _("Small")),
+ 		("large", _("Large")),])
+ 	config.usage.enable_tt_caching = ConfigYesNo(default = True)
+-	config.usage.sort_settings = ConfigYesNo(default=False)
++	config.usage.sort_settings = ConfigYesNo(default=True)
+ 	choicelist = []
+ 	for i in (10, 30):
+ 		choicelist.append((str(i), ngettext("%d second", "%d seconds", i) % i))
+@@ -118,7 +118,7 @@
+ 	config.usage.allowed_timeshift_paths = ConfigLocations(default = ["/media/hdd/"])
+ 
+ 	config.usage.movielist_trashcan = ConfigYesNo(default=True)
+-	config.usage.movielist_trashcan_days = ConfigNumber(default=8)
++	config.usage.movielist_trashcan_days = ConfigNumber(default=7)
+ 	config.usage.movielist_trashcan_reserve = ConfigNumber(default=40)
+ 	config.usage.on_movie_start = ConfigSelection(default = "resume", choices = [
+ 		("ask yes", _("Ask user") + " " + _("default") + " " + _("yes")),
+@@ -135,7 +135,7 @@
+ 	config.usage.leave_movieplayer_onExit = ConfigSelection(default = "popup", choices = [
+ 		("no", _("no")), ("popup", _("With popup")), ("without popup", _("Without popup")), ("movielist", _("Return to movie list")) ])
+ 
+-	config.usage.setup_level = ConfigSelection(default = "simple", choices = [
++	config.usage.setup_level = ConfigSelection(default = "expert", choices = [
+ 		("simple", _("Normal")),
+ 		("intermediate", _("Advanced")),
+ 		("expert", _("Expert")) ])
+@@ -215,7 +215,7 @@
+ 		choicelist.append((str(i), ngettext("%d minute", "%d minutes", m) % m))
+ 	config.usage.timeshift_start_delay = ConfigSelection(default = "0", choices = choicelist)
+ 
+-	config.usage.alternatives_priority = ConfigSelection(default = "0", choices = [
++	config.usage.alternatives_priority = ConfigSelection(default = "1", choices = [
+ 		("0", "DVB-S/-C/-T"),
+ 		("1", "DVB-S/-T/-C"),
+ 		("2", "DVB-C/-S/-T"),
+@@ -281,9 +281,9 @@
+ 	SystemInfo["DVB-C_priority_tuner_available"] = len(dvbc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbt_nims, atsc_nims))
+ 	SystemInfo["ATSC_priority_tuner_available"] = len(atsc_nims) > 3 and any(len(i) > 2 for i in (dvbs_nims, dvbc_nims, dvbt_nims))
+ 
+-	config.misc.disable_background_scan = ConfigYesNo(default = False)
++	config.misc.disable_background_scan = ConfigYesNo(default = True)
+ 	config.misc.use_ci_assignment = ConfigYesNo(default = False)
+-	config.usage.show_event_progress_in_servicelist = ConfigSelection(default = 'barright', choices = [
++	config.usage.show_event_progress_in_servicelist = ConfigSelection(default = 'percright', choices = [
+ 		('barleft', _("Progress bar left")),
+ 		('barright', _("Progress bar right")),
+ 		('percleft', _("Percentage left")),
+@@ -395,11 +395,11 @@
+ 	config.usage.boolean_graphic = ConfigYesNo(default=True)
+ 
+ 	config.epg = ConfigSubsection()
+-	config.epg.eit = ConfigYesNo(default = True)
++	config.epg.eit = ConfigYesNo(default = False)
+ 	config.epg.mhw = ConfigYesNo(default = False)
+-	config.epg.freesat = ConfigYesNo(default = True)
+-	config.epg.viasat = ConfigYesNo(default = True)
+-	config.epg.netmed = ConfigYesNo(default = True)
++	config.epg.freesat = ConfigYesNo(default = False)
++	config.epg.viasat = ConfigYesNo(default = False)
++	config.epg.netmed = ConfigYesNo(default = False)
+ 	config.epg.virgin = ConfigYesNo(default = False)
+ 	config.misc.showradiopic = ConfigYesNo(default = True)
+ 	def EpgSettingsChanged(configElement):
+@@ -481,7 +481,7 @@
+ 		eBackgroundFileEraser.getInstance().setEraseSpeed(int(el.value))
+ 	def updateEraseFlags(el):
+ 		eBackgroundFileEraser.getInstance().setEraseFlags(int(el.value))
+-	config.misc.erase_speed = ConfigSelection(default="20", choices = [
++	config.misc.erase_speed = ConfigSelection(default="100", choices = [
+ 		("10", _("10 MB/s")),
+ 		("20", _("20 MB/s")),
+ 		("50", _("50 MB/s")),
+@@ -707,16 +707,16 @@
+ 
+ 	def setEpgLanguage(configElement):
+ 		eServiceEvent.setEPGLanguage(configElement.value)
+-	config.autolanguage.audio_epglanguage = ConfigSelection(audio_language_choices[:1] + audio_language_choices [2:], default="---")
++	config.autolanguage.audio_epglanguage = ConfigSelection(audio_language_choices[:1] + audio_language_choices [2:], default="eng qaa")
+ 	config.autolanguage.audio_epglanguage.addNotifier(setEpgLanguage)
+ 
+ 	def setEpgLanguageAlternative(configElement):
+ 		eServiceEvent.setEPGLanguageAlternative(configElement.value)
+-	config.autolanguage.audio_epglanguage_alternative = ConfigSelection(audio_language_choices[:1] + audio_language_choices [2:], default="---")
++	config.autolanguage.audio_epglanguage_alternative = ConfigSelection(audio_language_choices[:1] + audio_language_choices [2:], default="fas per fa pes")
+ 	config.autolanguage.audio_epglanguage_alternative.addNotifier(setEpgLanguageAlternative)
+ 
+-	config.autolanguage.audio_autoselect1 = ConfigSelection(choices=audio_language_choices, default="---")
+-	config.autolanguage.audio_autoselect2 = ConfigSelection(choices=audio_language_choices, default="---")
++	config.autolanguage.audio_autoselect1 = ConfigSelection(choices=audio_language_choices, default="eng qaa")
++	config.autolanguage.audio_autoselect2 = ConfigSelection(choices=audio_language_choices, default="fas per fa pes")
+ 	config.autolanguage.audio_autoselect3 = ConfigSelection(choices=audio_language_choices, default="---")
+ 	config.autolanguage.audio_autoselect4 = ConfigSelection(choices=audio_language_choices, default="---")
+ 	config.autolanguage.audio_defaultac3 = ConfigYesNo(default = True)
+@@ -724,8 +724,8 @@
+ 	config.autolanguage.audio_usecache = ConfigYesNo(default = True)
+ 
+ 	subtitle_language_choices = audio_language_choices[:1] + audio_language_choices [2:]
+-	config.autolanguage.subtitle_autoselect1 = ConfigSelection(choices=subtitle_language_choices, default="---")
+-	config.autolanguage.subtitle_autoselect2 = ConfigSelection(choices=subtitle_language_choices, default="---")
++	config.autolanguage.subtitle_autoselect1 = ConfigSelection(choices=subtitle_language_choices, default="eng qaa")
++	config.autolanguage.subtitle_autoselect2 = ConfigSelection(choices=subtitle_language_choices, default="fas per fa pes")
+ 	config.autolanguage.subtitle_autoselect3 = ConfigSelection(choices=subtitle_language_choices, default="---")
+ 	config.autolanguage.subtitle_autoselect4 = ConfigSelection(choices=subtitle_language_choices, default="---")
+ 	config.autolanguage.subtitle_hearingimpaired = ConfigYesNo(default = False)
+diff -Naur enigma2-PLi/lib/python/Components/VolumeControl.py enigma2-PersianPrince/lib/python/Components/VolumeControl.py
+--- enigma2-PLi/lib/python/Components/VolumeControl.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Components/VolumeControl.py	2018-08-13 12:17:31.018308032 +0430
+@@ -21,7 +21,7 @@
+ 		VolumeControl.instance = self
+ 
+ 		config.audio = ConfigSubsection()
+-		config.audio.volume = ConfigInteger(default = 50, limits = (0, 100))
++		config.audio.volume = ConfigInteger(default = 100, limits = (0, 100))
+ 
+ 		self.volumeDialog = session.instantiateDialog(Volume)
+ 		self.muteDialog = session.instantiateDialog(Mute)
+diff -Naur enigma2-PLi/lib/python/Plugins/SystemPlugins/FastScan/plugin.py enigma2-PersianPrince/lib/python/Plugins/SystemPlugins/FastScan/plugin.py
+--- enigma2-PLi/lib/python/Plugins/SystemPlugins/FastScan/plugin.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/python/Plugins/SystemPlugins/FastScan/plugin.py	2018-08-13 12:16:56.595179077 +0430
+@@ -18,7 +18,7 @@
+ 
+ config.misc.fastscan = ConfigSubsection()
+ config.misc.fastscan.last_configuration = ConfigText(default="()")
+-config.misc.fastscan.auto = ConfigSelection(default="true", choices=[("true", _("yes")), ("false", _("no")), ("multi", _("multi"))])
++config.misc.fastscan.auto = ConfigSelection(default="false", choices=[("true", _("yes")), ("false", _("no")), ("multi", _("multi"))])
+ config.misc.fastscan.autoproviders = ConfigText(default="()")
+ config.misc.fastscan.drop = ConfigYesNo(default = True)
+ 
+diff -Naur enigma2-PLi/lib/service/servicedvb.cpp enigma2-PersianPrince/lib/service/servicedvb.cpp
+--- enigma2-PLi/lib/service/servicedvb.cpp	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/lib/service/servicedvb.cpp	2018-08-13 12:16:03.984525152 +0430
+@@ -1737,9 +1737,9 @@
+ 				return -2;
+ 			}
+ 
+-			if (((off_t)fs.f_bavail) * ((off_t)fs.f_bsize) < 200*1024*1024LL)
++			if (((off_t)fs.f_bavail) * ((off_t)fs.f_bsize) < 1024*1024*1024LL)
+ 			{
+-				eDebug("[eDVBServicePlay] timeshift not enough diskspace for timeshift! (less than 200MB)");
++				eDebug("[eDVBServicePlay] timeshift not enough diskspace for timeshift! (less than 1GB)");
+ 				return -3;
+ 			}
+ 		}
+diff -Naur enigma2-PLi/mytest.py enigma2-PersianPrince/mytest.py
+--- enigma2-PLi/mytest.py	2018-08-12 13:51:13.000000000 +0430
++++ enigma2-PersianPrince/mytest.py	2018-08-13 12:14:47.754510874 +0430
+@@ -53,7 +53,7 @@
+ profile("config.misc")
+ config.misc.radiopic = ConfigText(default = resolveFilename(SCOPE_CURRENT_SKIN, "radio.mvi"))
+ config.misc.blackradiopic = ConfigText(default = resolveFilename(SCOPE_CURRENT_SKIN, "black.mvi"))
+-config.misc.useTransponderTime = ConfigYesNo(default=True)
++config.misc.useTransponderTime = ConfigYesNo(default=False)
+ config.misc.startCounter = ConfigInteger(default=0) # number of e2 starts...
+ config.misc.standbyCounter = NoSave(ConfigInteger(default=0)) # number of standby
+ config.misc.DeepStandby = NoSave(ConfigYesNo(default=False)) # detect deepstandby
