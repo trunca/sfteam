@@ -2,6 +2,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append += "${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)}"
 
+SRC_URI_append += "file://defaultskin.patch"
+
 DEPENDS += "rc-models" 
 
 inherit upx_compress
