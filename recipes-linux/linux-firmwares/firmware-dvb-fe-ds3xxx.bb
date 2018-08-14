@@ -4,7 +4,10 @@ require conf/license/license-close.inc
 SUMMARY = "Firmware for ds3xxx dvb frontend"
 inherit allarch
 
-SRC_URI = "file://fw-ds3xxx.tar.gz"
+SRC_URI = "https://raw.githubusercontent.com/PLi-metas/linux-firmwares/master/fw-ds3xxx.tar.gz"
+
+SRC_URI[md5sum] = "b09621dae49fece2959134750a8cf5a1"
+SRC_URI[sha256sum] = "fb43e95c485dcad113aba9699bff3a7b16e38919324ab079569023a6a7ecd9f4"
 
 S = "${WORKDIR}"
 
