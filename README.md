@@ -220,7 +220,7 @@ Answer: No
 
 * sudo apt-get install autoconf automake bison bzip2 cvs diffstat flex g++ gawk gcc gettext git gzip help2man ncurses-bin libncurses5-dev libc6-dev libtool make texinfo patch perl pkg-config subversion tar texi2html wget chrpath libxml2-utils xsltproc python-setuptools libc6 genromfs mtd-utils dpkg-dev sshpass poedit translate-toolkit xclip linux-firmware linux-headers-`uname -r` linux-headers-generic linux-image-generic linux-libc-dev linux-source u-boot-tools upx-ucl doxygen repo optipng python-dev libglib2.0-dev pngquant default-jdk
 
-# How to build an Open PLi image using pli-extras (PLi experience)
+# How to build an Open PLi image (PLi experience)
 1. Clone openpli-oe-core somewhere:
 * git clone -b develop https://github.com/OpenPLi/openpli-oe-core.git
 
@@ -243,6 +243,11 @@ Answer: No
 ```
 Hint: Each time you run the command from step 4 all git repositories will get updated to their latest versions.
 ```
+# If you got machine error the next time you wanted to build an image:
+* cd pli-extras
+* ./update.sh
+* cd ..
+* MACHINE=dm7020hd make image
 
 # How to build our pli-extras image (PLi vision)
 5. Build our vision of PLi image for your machine (Example: dm7020hd):
