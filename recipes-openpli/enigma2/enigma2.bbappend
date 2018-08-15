@@ -4,6 +4,7 @@ SRC_URI_append += "\
 	file://defaultskin.patch \
 	${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)} \
 	${@bb.utils.contains("IMAGE_BASENAME", "pli-extras-enigma2", "file://prince.patch", "", d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "iansav", "file://newkeyboard.patch", "", d)}
 	"
 
 DEPENDS += "rc-models"
