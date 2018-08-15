@@ -25,18 +25,6 @@ diff -Naur enigma2-PLi/lib/driver/hdmi_cec.cpp enigma2-PersianPrince/lib/driver/
  		case 0x72:
  			key = 0x18e;
  			break;
-diff -Naur enigma2-PLi/lib/dvb/epgcache.cpp enigma2-PersianPrince/lib/dvb/epgcache.cpp
---- enigma2-PLi/lib/dvb/epgcache.cpp	2018-08-12 13:51:13.000000000 +0430
-+++ enigma2-PersianPrince/lib/dvb/epgcache.cpp	2018-08-13 14:55:47.907995525 +0430
-@@ -30,7 +30,7 @@
- /* Interval between "garbage collect" cycles */
- #define CLEAN_INTERVAL 60000    //  1 min
- /* Restart EPG data capture */
--#define UPDATE_INTERVAL 3600000  // 60 min
-+#define UPDATE_INTERVAL 60000 // 1 min
- /* Time to wait after tuning in before EPG data capturing starts */
- #define ZAP_DELAY 2000          // 2 sec
- 
 diff -Naur enigma2-PLi/lib/python/Components/AVSwitch.py enigma2-PersianPrince/lib/python/Components/AVSwitch.py
 --- enigma2-PLi/lib/python/Components/AVSwitch.py	2018-08-12 13:51:13.000000000 +0430
 +++ enigma2-PersianPrince/lib/python/Components/AVSwitch.py	2018-08-13 12:40:46.385946042 +0430
