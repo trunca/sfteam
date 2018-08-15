@@ -166,7 +166,7 @@ python do_cleanup () {
         ('lunix', 'lunix.png', 'qviart.png', 'qviart.html'),
         ('e4hd', 'e4hd.png', 'e4hd.png', 'e4hd.html'),
         ('spark', 'spark.jpg', 'spark.png', 'spark.html'),
-        ('spark7162', 'spark7162.jpg', 'spark7162.png', 'spark7162.html'),
+        ('spark7162', 'spark7162.jpg', 'spark.png', 'spark.html'),
     ]
 
     import os
