@@ -13,13 +13,10 @@ S = "${WORKDIR}"
 
 PACKAGES = "${PN}"
 FILES_${PN} += "${base_libdir}/firmware/brcm"
-FILES_${PN} += "${sysconfdir}/wifi/"
 
 do_install() {
-    install -d ${D}${sysconfdir}/wifi/
-    install -m 0755 config.txt  ${D}${sysconfdir}/wifi/config.txt
     install -d ${D}${base_libdir}/firmware/brcm
-    install -m 0644 nvram*.txt ${D}${base_libdir}/firmware/brcm/
+    install -m 0644 *.txt ${D}${base_libdir}/firmware/brcm/
     install -m 0644 *.hcd ${D}${base_libdir}/firmware/brcm/
     install -m 0644 *.bin ${D}${base_libdir}/firmware/brcm/
 }
