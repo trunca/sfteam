@@ -1,6 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_append += "${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)}"
+SRC_URI_append += "${@bb.utils.contains("MACHINE_FEATURES", "epgcache1", "file://epgcache.patch", "", d)} \
+					file://workaround-for-dns-no-dhcp.patch \
+					"
 
 DEPENDS += "rc-models" 
 
