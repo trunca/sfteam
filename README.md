@@ -7,6 +7,7 @@
 * k2pro
 * k2prov2
 * k3pro
+* odroidc2
 * wetekhub
 * wetekplay
 * wetekplay2
