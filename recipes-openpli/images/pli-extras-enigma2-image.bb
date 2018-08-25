@@ -102,6 +102,7 @@ IMAGE_INSTALL += "\
 	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	busybox-cron \
+	curl \
 	ntp \
 	astra-sm \
 	dvbsnoop \
