@@ -90,7 +90,6 @@ IMAGE_INSTALL += "\
 	libavahi-client \
 	settings-autorestore \
 	tuxbox-common \
-	ofgwrite \
 	${ENIGMA2_PLUGINS} \
 	${@bb.utils.contains("MACHINE_FEATURES", "transcoding", "enigma2-plugin-systemplugins-transcodingsetup", "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "streamproxy", "streamproxy", "", d)} \
@@ -101,6 +100,8 @@ IMAGE_INSTALL += "\
 	${@bb.utils.contains("MACHINE_FEATURES", "externalwifi", "${EXTERNAL_WIFI_DRIVERS}", "", d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
+	ofgwrite \
+	samba-base \
 	busybox-cron \
 	curl \
 	ntp \

@@ -30,7 +30,6 @@ IMAGE_INSTALL = "\
 	python-ipaddress  \
 	python-netifaces \
 	python-pysmb \
-	samba-base \
 	sdparm \
 	tuxbox-common \
 	tzdata \
