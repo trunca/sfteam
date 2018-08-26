@@ -34,6 +34,12 @@ git checkout develop
 git pull
 echo -e "\n"
 cd ..
+cd meta-clap
+echo "Checking out meta-clap develop branch:"
+git checkout develop
+git pull
+echo -e "\n"
+cd ..
 cd meta-cube
 echo "Checking out meta-cube develop branch:"
 git checkout develop
@@ -145,4 +151,3 @@ if [ "$choice" = "P" -o "$choice" = "p" ];then
 else 
 	exit 0
 fi
-
