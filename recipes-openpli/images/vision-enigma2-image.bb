@@ -1,4 +1,4 @@
-require ../../../meta-openpli/recipes-openpli/images/openpli-image.bb
+require vision-image.bb
 
 KERNEL_WIFI_DRIVERS += "\
 	firmware-carl9170 \
@@ -112,8 +112,5 @@ IMAGE_INSTALL += "\
 	strace \
 	nbench-byte \
 	wscan \
-	util-linux-lscpu \
 	iptraf", d)} \
 	"
-
-export IMAGE_BASENAME = "vision-enigma2"
