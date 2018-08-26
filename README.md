@@ -42,6 +42,9 @@
 * twinboxlcd
 * twinboxlcdci5
 
+# Clap
+* cc1
+
 # Cube
 * cube
 
