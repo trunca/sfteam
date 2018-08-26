@@ -167,6 +167,7 @@
 # Octagon
 * sf4008
 * sf5008
+* sf8008
 
 # Odin
 * axase3
