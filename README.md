@@ -250,8 +250,8 @@ Hint: Each time you run the command from step 4 all git repositories will get up
 * cd ..
 * MACHINE=dm7020hd make image
 
-# How to build our pli-extras image (PLi vision)
-5. Build our vision of PLi image for your machine (Example: dm7020hd):
+# How to build our vision image
+5. Build our vision of enigma2 image for your machine (Example: dm7020hd):
 * cd build
 * source env.source
-* MACHINE=dm7020hd bitbake pli-extras-enigma2-image
+* MACHINE=dm7020hd bitbake vision-enigma2-image

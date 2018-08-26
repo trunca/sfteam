@@ -116,4 +116,4 @@ IMAGE_INSTALL += "\
 	iptraf", d)} \
 	"
 
-export IMAGE_BASENAME = "pli-extras-enigma2"
+export IMAGE_BASENAME = "vision-enigma2"
