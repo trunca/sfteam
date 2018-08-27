@@ -131,7 +131,6 @@
 * evomini
 * evominiplus
 * marvel1
-* viperslim
 * x2plus
 
 # Fulan
