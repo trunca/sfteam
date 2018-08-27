@@ -1,6 +1,7 @@
 #!/bin/sh
 echo ""
-echo "This is only for MastaG, Persian Prince, Hains and moham96 with push access"
+echo "This is only for PLi-metas members with push access:"
+echo "MastaG, Persian Prince, Hains, moham96, kueken, lprot"
 echo ""
 echo "Stage 1: git pull for new changes"
 echo ""
