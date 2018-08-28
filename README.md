@@ -240,6 +240,10 @@
 * spycat4kmini
 * vp7358ci
 
+# XT
+* beyonwizu4
+* et13000
+
 # Ubuntu 18.04 LTS setup
 * sudo dpkg-reconfigure dash
 
