@@ -67,3 +67,6 @@
 [submodule "meta-gb"]
 	path = meta-gb
 	url = https://github.com/PLi-metas/meta-gb.git
+[submodule "meta-broadmedia"]
+	path = meta-broadmedia
+	url = https://github.com/PLi-metas/meta-broadmedia.git
