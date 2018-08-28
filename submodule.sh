@@ -149,6 +149,12 @@ git checkout develop
 git pull
 echo -e "\n"
 cd ..
+cd meta-xt
+echo "Checking out meta-xt develop branch:"
+git checkout develop
+git pull
+echo -e "\n"
+cd ..
 echo "Stage 2: git add for new changes"
 echo ""
 git add meta-*
