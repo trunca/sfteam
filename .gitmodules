@@ -64,3 +64,6 @@
 [submodule "meta-clap"]
 	path = meta-clap
 	url = https://github.com/PLi-metas/meta-clap.git
+[submodule "meta-gb"]
+	path = meta-gb
+	url = https://github.com/PLi-metas/meta-gb.git
