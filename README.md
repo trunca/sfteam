@@ -134,6 +134,23 @@
 * x2plus
 
 # Fulan
+* gb800se
+* gb800seplus
+* gb800solo
+* gb800ue
+* gb800ueplus
+* gbipbox
+* gbquad
+* gbquadplus
+* gbultrase
+* gbultraue
+* gbultraueh
+* gbx1
+* gbx2
+* gbx3
+* gbx3h
+
+# GB
 * spark
 * spark7162
 
