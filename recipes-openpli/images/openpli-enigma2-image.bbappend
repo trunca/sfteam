@@ -18,3 +18,9 @@ ENIGMA2_PLUGINS_append += "\
 IMAGE_INSTALL_append += "\
 	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
 	"
+
+IMAGE_INSTALL_remove += "\
+	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "\
+	samba-base \
+	", "", d)} \
+	"
