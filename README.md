@@ -26,6 +26,12 @@
 * sogno8800hd
 * uniboxhde
 
+# BroadMedia
+* bre2zet2c
+* sf128
+* sf138
+* sf3038
+
 # Ceryon
 * 9910lx
 * 9911lx
