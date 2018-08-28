@@ -83,6 +83,12 @@ git checkout develop
 git pull
 echo -e "\n"
 cd ..
+cd meta-gb
+echo "Checking out meta-gb develop branch:"
+git checkout develop
+git pull
+echo -e "\n"
+cd ..
 cd meta-ini
 echo "Checking out meta-ini develop branch:"
 git checkout develop
