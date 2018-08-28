@@ -134,6 +134,10 @@
 * x2plus
 
 # Fulan
+* spark
+* spark7162
+
+# GB
 * gb800se
 * gb800seplus
 * gb800solo
@@ -149,10 +153,6 @@
 * gbx2
 * gbx3
 * gbx3h
-
-# GB
-* spark
-* spark7162
 
 # INI
 * atemio5x00
