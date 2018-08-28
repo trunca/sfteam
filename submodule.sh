@@ -29,6 +29,12 @@ git checkout develop
 git pull
 echo -e "\n"
 cd ..
+cd meta-broadmedia
+echo "Checking out meta-broadmedia develop branch:"
+git checkout develop
+git pull
+echo -e "\n"
+cd ..
 cd meta-ceryon
 echo "Checking out meta-ceryon develop branch:"
 git checkout develop
