@@ -19,7 +19,7 @@ SRC_URI = " \
 	git://github.com/upx/upx-lzma-sdk.git;name=lzmasdk;destsuffix=git/src/lzma-sdk \
 	http://www.oberhumer.com/opensource/ucl/download/ucl-1.03.tar.gz;subdir=git;name=ucl \
 	file://ucl_configure_fix.patch;patch=1 \
-	file://fix-build-with-gcc8.patch;apply=no \
+	file://fix-build-with-gcc8.patch \
 	"
 
 S = "${WORKDIR}/git"
