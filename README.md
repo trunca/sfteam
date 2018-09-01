@@ -69,17 +69,13 @@
 * iqonios200hd
 * iqonios300hd
 * iqonios300hdv2
-* mediaart200hd
 * mediabox
-* megaforce1plus
-* megaforce2
 * optimussos
 * optimussos1
 * optimussos1plus
 * optimussos2
 * optimussos2plus
 * optimussos3plus
-* roxxs200hd
 * tm2t
 * tm4ksuper
 * tmnano
@@ -90,7 +86,6 @@
 * tmnanose
 * tmnanosecombo
 * tmnanosem2
-* tmnanosem2plus
 * tmnanoseplus
 * tmsingle
 * tmtwin
