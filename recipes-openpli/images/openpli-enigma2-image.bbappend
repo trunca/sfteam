@@ -6,6 +6,7 @@ ENIGMA2_PLUGINS_remove += "\
 # Ship some extra stuff with the image except for smallflash STBs
 ENIGMA2_PLUGINS_append += "\
 	enigma2-plugin-extensions-openwebif-extras \
+	enigma2-plugin-systemplugins-wirelesslan \
 	${@bb.utils.contains('MACHINE_FEATURES', 'ci', 'enigma2-plugin-systemplugins-commoninterfaceassignment', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'dvd', 'enigma2-plugin-extensions-cdinfo enigma2-plugin-extensions-dvdplayer', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'fan', 'enigma2-plugin-systemplugins-extrafancontrol', '', d)} \
